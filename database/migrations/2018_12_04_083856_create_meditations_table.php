@@ -18,7 +18,7 @@ class CreateMeditationsTable extends Migration
             $table->text('text');
             $table->integer('meditation_attribution_id');
             $table->integer('displays');
-            $table->interger('groovies');
+            $table->integer('groovies');
             $table->timestamps();
         });
     }
