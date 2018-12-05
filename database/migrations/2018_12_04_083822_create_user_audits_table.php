@@ -15,7 +15,7 @@ class CreateUserAuditsTable extends Migration
     {
         Schema::create('user_audits', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('activity'); //should be defined by a CONST instead
+            $table->char('activity', 32); //should be defined by a CONST instead
             $table->timestamps();
         });
     }
