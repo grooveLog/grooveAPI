@@ -15,6 +15,8 @@ class CreateMeditationAttributionsTable extends Migration
     {
         Schema::create('meditation_attributions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('image');
             $table->timestamps();
         });
     }
