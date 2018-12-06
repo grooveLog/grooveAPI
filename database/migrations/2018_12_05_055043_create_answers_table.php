@@ -21,7 +21,7 @@ class CreateAnswersTable extends Migration
             $table->json('answers');
             $table->dateTime('started_at');
             $table->dateTime('submitted_at');
-            $table->string('status');
+            $table->string('status', 12);
             $table->timestamps();
         });
     }

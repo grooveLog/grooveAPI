@@ -23,9 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('lastname');
             $table->date('birthday');
             $table->string('gender');
-            $table->string('personal_summary');
+            $table->text('personal_summary');
             $table->string('locale');
-            $table->char('status', 12);
+            $table->string('status', 12);
             $table->timestamps();
         });
     }

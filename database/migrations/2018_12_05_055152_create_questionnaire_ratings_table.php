@@ -15,6 +15,11 @@ class CreateQuestionnaireRatingsTable extends Migration
     {
         Schema::create('questionnaire_ratings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('questionnaire_id');
+            $table->integer('questions_id');
+            $table->integer('rating');
+            $table->text('comment');
             $table->timestamps();
         });
     }

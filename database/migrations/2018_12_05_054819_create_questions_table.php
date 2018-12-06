@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('questionnaire_id');
             $table->integer('version');
             $table->json('questions');
-            $table->char('status', 12);
+            $table->string('status', 12);
             $table->integer('created_by');
             $table->timestamps();
         });

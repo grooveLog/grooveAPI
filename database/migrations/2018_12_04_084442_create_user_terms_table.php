@@ -15,8 +15,8 @@ class CreateUserTermsTable extends Migration
     {
         Schema::create('user_terms', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
-            $table->mediumText('text');
+            $table->string('type', 32);
+            $table->text('text');
             $table->timestamps();
         });
     }

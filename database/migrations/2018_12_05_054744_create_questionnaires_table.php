@@ -17,8 +17,8 @@ class CreateQuestionnairesTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('title');
-            $table->string('description');
-            $table->string('instructions');
+            $table->text('description');
+            $table->text('instructions');
             $table->string('image');
             $table->integer('user_id');
             $table->timestamps();
