@@ -18,10 +18,10 @@ class CreateAnswersTable extends Migration
             $table->integer('user_id');
             $table->integer('questionnaire_id');
             $table->integer('questions_id');
-            $table->json('answers');
-            $table->dateTime('started_at');
-            $table->dateTime('submitted_at');
-            $table->string('status', 12);
+            $table->json('answers')->comment('Answers in JSON format');
+            $table->dateTime('started_at')->comment('When questionnaire was started');
+            $table->dateTime('submitted_at')->comment('When answers were submitted');
+            $table->string('status', 12)->comment('Status - e.g. IN PROGRESS, COMPLETED');
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ class CreateUniversalGoalsTable extends Migration
     {
         Schema::create('universal_goals', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->comment('ID of user who submitted the goal');
+            $table->string('name')->comment('Name of Goal (e.g. \'Run a 5k race\' )');
+            $table->string('privacy', 12)->comment('PUBLIC or PRIVATE (or TEAM in Future)');
+            $table->bool('endorsed')->comment('Whether endorsd by GrooveLog');
+            $table->string('status', 12)->comment('ACTIVE / INACTIVE etc.');
+            $table->integer('total_assignments')->comment('Counter for the number of times this goal has been used');
+            $table->float('average_reward_rating')->comment('Average of all reward ratings');
             $table->timestamps();
         });
     }

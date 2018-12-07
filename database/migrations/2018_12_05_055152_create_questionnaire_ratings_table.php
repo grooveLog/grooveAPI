@@ -18,8 +18,8 @@ class CreateQuestionnaireRatingsTable extends Migration
             $table->integer('user_id');
             $table->integer('questionnaire_id');
             $table->integer('questions_id');
-            $table->integer('rating');
-            $table->text('comment');
+            $table->integer('rating')->comment('e.g. rating on a scale of 1 to 5 (e.g. stars)');
+            $table->text('comment')->comment('User comment');
             $table->timestamps();
         });
     }
