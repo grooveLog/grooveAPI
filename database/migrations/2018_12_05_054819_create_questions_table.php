@@ -16,10 +16,10 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('questionnaire_id');
-            $table->integer('version');
-            $table->json('questions');
-            $table->string('status', 12);
-            $table->integer('created_by');
+            $table->integer('version')->comment('Allows version control over questionnaires');
+            $table->json('questions')->comment('Full Questionnaire in JSON Format');
+            $table->string('status', 12)->comment('Status of questionnaire ACTIVE / INACTIVE etc');
+            $table->integer('created_by')->comment('User ID of who committed the questionnaire update');
             $table->timestamps();
         });
     }

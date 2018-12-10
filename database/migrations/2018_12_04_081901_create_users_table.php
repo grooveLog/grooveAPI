@@ -15,17 +15,17 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('auth_id')->unique();
-            $table->string('authentication_method');
+            $table->string('auth_id')->unique()->comment('hash from google');
+            $table->string('authentication_method', 16)->comment('	if available from google e.g. Facebook; Email etc');
             $table->string('email');
             $table->string('username');
             $table->string('firstname');
             $table->string('lastname');
-            $table->date('birthday');
-            $table->string('gender');
-            $table->text('personal_summary');
+            $table->date('birthday')->comment('Use this to get the age of the user (non-mandatory)');
+            $table->string('gender', 1)->comment('e.g. MALE M, FEMALE F - OTHER? (non-mandatory');
+            $table->text('personal_summary')->comment('user submitted description of who they are and why they\'re using grooveLog');
             $table->string('locale');
-            $table->string('status', 12);
+            $table->string('status', 12)->comment('\'ACTIVE\', \'INACITVE\', \'GROOVER\' etc...');
             $table->timestamps();
         });
     }
