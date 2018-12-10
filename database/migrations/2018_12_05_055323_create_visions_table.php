@@ -22,7 +22,7 @@ class CreateVisionsTable extends Migration
             $table->integer('passion')->comment('personal passion for the vision (stars) e.g. 05 10 15 20 25 30 35 40 45 50');
             $table->integer('vision_timescales_id');
             $table->string('status', 12)->comment('e.g. COMPLETED, ABANDONED, POSTPONED etc');
-            $table->datetime('completed_at')->comment('When completed');
+            $table->dateTime('completed_at')->comment('When completed');
             $table->timestamps();
         });
     }
