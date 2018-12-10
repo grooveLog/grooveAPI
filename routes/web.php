@@ -15,16 +15,19 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'v1'], function () use ($router) {
 
-  $router->get('users',  ['uses' => 'UserController@getAllUsers']);
+    //users
+    $router->get('users',  ['uses' => 'UserController@getAllUsers']);
+    $router->get('users/{id}', ['uses' => 'UserController@getOneUser']);
+    $router->post('users', ['uses' => 'UserController@create']);
+    $router->delete('users/{id}', ['uses' => 'UserController@delete']);
+    $router->put('users/{id}', ['uses' => 'UserController@update']);
 
-  $router->get('users/{id}', ['uses' => 'UserController@getOneUser']);
-
-  $router->post('users', ['uses' => 'UserController@create']);
-
-  $router->delete('users/{id}', ['uses' => 'UserController@delete']);
-
-  $router->put('user/{id}', ['uses' => 'UserController@update']);
-
+    //meditations
+    $router->get('meditations',  ['uses' => 'MeditationController@getAllMeditations']);
+    $router->get('meditations/{id}', ['uses' => 'MeditationController@getOneMeditation']);
+    $router->post('meditations', ['uses' => 'MeditationController@create']);
+    $router->delete('meditations/{id}', ['uses' => 'MeditationController@delete']);
+    $router->put('meditations/{id}', ['uses' => 'MeditationController@update']);
 });

@@ -1,8 +1,9 @@
 <?php
-use App\User;
-use Illuminate\Http\Request;
 
 namespace App\Http\Controllers;
+
+use App\User;
+use Illuminate\Http\Request;
 
 
 class UserController extends Controller
@@ -21,11 +22,13 @@ class UserController extends Controller
       public function create(Request $request)
       {
           $this->validate($request, [
-            'username' => 'required|max:255',
-            'firstname' => 'required|alpha|max:255',
-            'lastname' => 'required|alpha|max:255',
-            'email' => 'required|email|unique:users|max:255',
-            'locale' => 'required'
+              'username' => 'required|alpha_dash|max:255',
+              'firstname' => 'required|max:255',
+              'lastname' => 'required|max:255',
+              'email' => 'required|email|unique:users|max:255',
+              'gender' => 'alpha|max:1',
+              'locale' => 'required'
+
           ]);
 
           $user = User::create($request->all());
@@ -35,7 +38,9 @@ class UserController extends Controller
 
       public function update($id, Request $request)
       {
-          $user = Userr::findOrFail($id);
+          //add some validation here
+
+          $user = User::findOrFail($id);
           $user->update($request->all());
 
           return response()->json($user, 200);
