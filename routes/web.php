@@ -52,5 +52,18 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('questionnaires/{id}', ['uses' => 'QuestionnaireController@delete']);
     $router->put('questionnaires/{id}', ['uses' => 'QuestionnaireController@update']);
 
+    //questions
+    $router->get('questions',  ['uses' => 'QuestionnaireController@getAllQuestions']);
+    $router->get('questions/{id}', ['uses' => 'QuestionnaireController@getOneQuestion']);
+    $router->post('questions', ['uses' => 'QuestionnaireController@create']);
+    $router->delete('questions/{id}', ['uses' => 'QuestionnaireController@delete']);
+    $router->put('questions/{id}', ['uses' => 'QuestionnaireController@update']);
+
+    //answers
+    $router->get('answers',  ['uses' => 'QuestionnaireController@getAllAnswers']);
+    $router->get('answers/{id}', ['uses' => 'QuestionnaireController@getOneAnswer']);
+    $router->post('answers', ['uses' => 'QuestionnaireController@create']);
+    $router->delete('answers/{id}', ['uses' => 'QuestionnaireController@delete']);
+    $router->put('answers/{id}', ['uses' => 'QuestionnaireController@update']);
 
 });
