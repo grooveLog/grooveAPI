@@ -38,4 +38,19 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('meditation_attributions/{id}', ['uses' => 'MeditationAttributionController@delete']);
     $router->put('meditation_attributions/{id}', ['uses' => 'MeditationAttributionController@update']);
 
+    //user terms
+    $router->get('user_terms',  ['uses' => 'UserTermController@getAllUserTerms']);
+    $router->get('user_terms/{id}', ['uses' => 'UserTermController@getOneUserTerm']);
+    $router->post('user_terms', ['uses' => 'UserTermController@create']);
+    $router->delete('user_terms/{id}', ['uses' => 'UserTermController@delete']);
+    $router->put('user_terms/{id}', ['uses' => 'UserTermController@update']);
+
+    //questionnaires
+    $router->get('questionnaires',  ['uses' => 'QuestionnaireController@getAllQuestionnaires']);
+    $router->get('questionnaires/{id}', ['uses' => 'QuestionnaireController@getOneQuestionnaire']);
+    $router->post('questionnaires', ['uses' => 'QuestionnaireController@create']);
+    $router->delete('questionnaires/{id}', ['uses' => 'QuestionnaireController@delete']);
+    $router->put('questionnaires/{id}', ['uses' => 'QuestionnaireController@update']);
+
+
 });
