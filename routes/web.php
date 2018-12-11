@@ -30,4 +30,12 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->post('meditations', ['uses' => 'MeditationController@create']);
     $router->delete('meditations/{id}', ['uses' => 'MeditationController@delete']);
     $router->put('meditations/{id}', ['uses' => 'MeditationController@update']);
+
+    //meditation attributions
+    $router->get('meditation_attributions',  ['uses' => 'MeditationAttributionController@getAllMeditationAttributions']);
+    $router->get('meditation_attributions/{id}', ['uses' => 'MeditationAttributionController@getOneMeditationAttribution']);
+    $router->post('meditation_attributions', ['uses' => 'MeditationAttributionController@create']);
+    $router->delete('meditation_attributions/{id}', ['uses' => 'MeditationAttributionController@delete']);
+    $router->put('meditation_attributions/{id}', ['uses' => 'MeditationAttributionController@update']);
+
 });
