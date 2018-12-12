@@ -22,8 +22,8 @@ class VisionTimescaleController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            '' => '',
-
+            'text' => 'required|alpha_dash',
+            'numeric' => 'required|integer',
         ]);
 
         $visionTimescale = VisionTimescale::create($request->all());
@@ -34,7 +34,8 @@ class VisionTimescaleController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            '' => '',
+            'text' => 'required|alpha_dash',
+            'numeric' => 'required|integer'
         ]);
 
         $visionTimescale = VisionTimescale::findOrFail($id);

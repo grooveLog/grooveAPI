@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class UniversalVision extends Model implements AuthenticatableContract, AuthorizableContract
+class Goal extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
@@ -18,7 +18,7 @@ class UniversalVision extends Model implements AuthenticatableContract, Authoriz
      * @var array
      */
     protected $fillable = [
-        'name', 'comment', 'privacy', 'endorsed', 'status',
+        'personal_description', 'progress', 'reward', 'goal_from_date', 'goal_date_to', 'status',
     ];
 
     /**
@@ -27,6 +27,6 @@ class UniversalVision extends Model implements AuthenticatableContract, Authoriz
      * @var array
      */
     protected $hidden = [
-        //
+        'user_id', 'universal_goal_id', 'completed_at'
     ];
 }
