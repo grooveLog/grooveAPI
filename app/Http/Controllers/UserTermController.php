@@ -24,22 +24,24 @@ class UserTermController extends Controller
         $this->validate($request, [
             'type' => 'required|alpha_dash|max:32',
             'text' => 'required|alpha_dash',
-
         ]);
 
-        $user = UserTerm::create($request->all());
+        $terms = UserTerm::create($request->all());
 
-        return response()->json($user, 201);
+        return response()->json($terms, 201);
     }
 
     public function update($id, Request $request)
     {
-        //add some validation here
+        $this->validate($request, [
+            'type' => 'required|alpha_dash|max:32',
+            'text' => 'required|alpha_dash',
+        ]);
 
-        $user = UserTerm::findOrFail($id);
-        $user->update($request->all());
+        $terms = UserTerm::findOrFail($id);
+        $terms->update($request->all());
 
-        return response()->json($user, 200);
+        return response()->json($terms, 200);
     }
 
     public function delete($id)

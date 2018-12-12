@@ -18,7 +18,7 @@ class CreateMeditationsTable extends Migration
             $table->text('text')->comment('The quote');
             $table->integer('meditation_attribution_id');
             $table->integer('shown_count')->comment('number of times a meditation has been rendered');
-            $table->integer('groovies')->comment('number of Groovies recieved');
+            $table->integer('groovies')->comment('number of Groovies received');
             $table->timestamps();
         });
     }

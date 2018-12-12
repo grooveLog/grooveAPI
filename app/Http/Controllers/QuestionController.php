@@ -27,22 +27,26 @@ class QuestionController extends Controller
             'questions' => 'required|json',
             'status' => 'required|max:12',
             'created_by' => 'required|integer'
-
         ]);
 
-        $user = Question::create($request->all());
+        $questions = Question::create($request->all());
 
-        return response()->json($user, 201);
+        return response()->json($questions, 201);
     }
 
     public function update($id, Request $request)
     {
-        //add some validation here
+        $this->validate($request, [
+            'questionnaire_id' => 'required|integer',
+            'version' => 'required|integer',
+            'questions' => 'required|json',
+            'status' => 'required|max:12',
+        ]);
 
-        $user = Question::findOrFail($id);
-        $user->update($request->all());
+        $questions = Question::findOrFail($id);
+        $questions->update($request->all());
 
-        return response()->json($user, 200);
+        return response()->json($questions, 200);
     }
 
     public function delete($id)

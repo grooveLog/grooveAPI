@@ -28,7 +28,6 @@ class UserController extends Controller
               'email' => 'required|email|unique:users|max:255',
               'gender' => 'alpha|max:1',
               'locale' => 'required'
-
           ]);
 
           $user = User::create($request->all());
@@ -38,7 +37,14 @@ class UserController extends Controller
 
       public function update($id, Request $request)
       {
-          //add some validation here
+          $this->validate($request, [
+              'username' => 'required|alpha_dash|max:255',
+              'firstname' => 'required|max:255',
+              'lastname' => 'required|max:255',
+              'email' => 'required|email|unique:users|max:255',
+              'gender' => 'alpha|max:1',
+              'locale' => 'required'
+          ]);
 
           $user = User::findOrFail($id);
           $user->update($request->all());

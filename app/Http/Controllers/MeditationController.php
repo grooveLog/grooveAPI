@@ -24,22 +24,24 @@ class MeditationController extends Controller
         $this->validate($request, [
             'text' => 'required|alpha_dash',
             'meditation_attribution_id' => 'required|integer',
-
         ]);
 
-        $user = Meditation::create($request->all());
+        $meditation = Meditation::create($request->all());
 
-        return response()->json($user, 201);
+        return response()->json($meditation, 201);
     }
 
     public function update($id, Request $request)
     {
-        //add some validation here
+        $this->validate($request, [
+            'text' => 'required|alpha_dash',
+            'meditation_attribution_id' => 'required|integer',
+        ]);
 
-        $user = Meditation::findOrFail($id);
-        $user->update($request->all());
+        $meditation = Meditation::findOrFail($id);
+        $meditation->update($request->all());
 
-        return response()->json($user, 200);
+        return response()->json($meditation, 200);
     }
 
     public function delete($id)

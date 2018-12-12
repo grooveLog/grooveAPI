@@ -26,24 +26,29 @@ class QuestionnaireController extends Controller
             'title' => 'required|max:255',
             'description' => '',
             'instructions' => '',
-            'image' => 'required|url|max:255',
+            'image' => 'url|max:255',
             'user_id' => 'integer'
-
         ]);
 
-        $user = Questionnaire::create($request->all());
+        $questionnaire = Questionnaire::create($request->all());
 
-        return response()->json($user, 201);
+        return response()->json($questionnaire, 201);
     }
 
     public function update($id, Request $request)
     {
-        //add some validation here
+        $this->validate($request, [
+            'type' => 'required|alpha_dash|max:32',
+            'title' => 'required|max:255',
+            'description' => '',
+            'instructions' => '',
+            'image' => 'url|max:255',
+        ]);
 
-        $user = Questionnaire::findOrFail($id);
-        $user->update($request->all());
+        $questionnaire = Questionnaire::findOrFail($id);
+        $questionnaire->update($request->all());
 
-        return response()->json($user, 200);
+        return response()->json($questionnaire, 200);
     }
 
     public function delete($id)

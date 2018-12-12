@@ -24,32 +24,35 @@ class AnswerController extends Controller
         $this->validate($request, [
             'user_id' => 'required|integer',
             'questionnaire_id' => 'required|integer',
-            'question_id' => 'required|integer',
+            'questions_id' => 'required|integer',
             'answers' => 'required|json',
             'started_at' => 'required',
-            'submitted_at' => '',
             'status' => 'required|alpha_dash'
         ]);
 
-        $user = Answer::create($request->all());
+        $answer = Answer::create($request->all());
 
-        return response()->json($user, 201);
+        return response()->json($answer, 201);
     }
 
     public function update($id, Request $request)
     {
-        //add some validation here
+        $this->validate($request, [
+            'answers' => 'required|json',
+            'submitted_at' => '',
+            'status' => 'required|alpha_dash'
+        ]);
 
-        $user = Answer::findOrFail($id);
-        $user->update($request->all());
+        $answer = Answer::findOrFail($id);
+        $answer->update($request->all());
 
-        return response()->json($user, 200);
+        return response()->json($answer, 200);
     }
 
     public function delete($id)
     {
         Answer::findOrFail($id)->delete();
-        return response('Successfully Deleted User Term', 200);
+        return response('Successfully Deleted Answer', 200);
     }
 
 

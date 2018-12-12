@@ -59,11 +59,25 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('questions/{id}', ['uses' => 'QuestionnaireController@delete']);
     $router->put('questions/{id}', ['uses' => 'QuestionnaireController@update']);
 
+    //questionnaire ratings
+    $router->get('questionnaire_ratings',  ['uses' => 'QuestionnaireController@getAllQuestionnaireRatings']);
+    $router->get('questionnaire_ratings/{id}', ['uses' => 'QuestionnaireController@getOneQuestionnaireRating']);
+    $router->post('questionnaire_ratings', ['uses' => 'QuestionnaireController@create']);
+    $router->delete('questionnaire_ratings/{id}', ['uses' => 'QuestionnaireController@delete']);
+    $router->put('questionnaire_ratings/{id}', ['uses' => 'QuestionnaireController@update']);
+
     //answers
     $router->get('answers',  ['uses' => 'QuestionnaireController@getAllAnswers']);
     $router->get('answers/{id}', ['uses' => 'QuestionnaireController@getOneAnswer']);
     $router->post('answers', ['uses' => 'QuestionnaireController@create']);
     $router->delete('answers/{id}', ['uses' => 'QuestionnaireController@delete']);
     $router->put('answers/{id}', ['uses' => 'QuestionnaireController@update']);
+
+    //universal visions
+    $router->get('universal_visions',  ['uses' => 'QuestionnaireController@getAllUniversalVisions']);
+    $router->get('universal_visions/{id}', ['uses' => 'QuestionnaireController@getOneUniversalVision']);
+    $router->post('universal_visions', ['uses' => 'QuestionnaireController@create']);
+    $router->delete('universal_visions/{id}', ['uses' => 'QuestionnaireController@delete']);
+    $router->put('universal_visions/{id}', ['uses' => 'QuestionnaireController@update']);
 
 });

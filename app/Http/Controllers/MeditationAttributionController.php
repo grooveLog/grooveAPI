@@ -24,22 +24,24 @@ class MeditationAttributionController extends Controller
         $this->validate($request, [
             'name' => 'required|alpha_dash|max:255',
             'image' => 'required|url|max:255',
-
         ]);
 
-        $user = MeditationAttribution::create($request->all());
+        $attribution = MeditationAttribution::create($request->all());
 
-        return response()->json($user, 201);
+        return response()->json($attribution, 201);
     }
 
     public function update($id, Request $request)
     {
-        //add some validation here
+        $this->validate($request, [
+            'name' => 'required|alpha_dash|max:255',
+            'image' => 'required|url|max:255',
+        ]);
 
-        $user = MeditationAttribution::findOrFail($id);
-        $user->update($request->all());
+        $attribution = MeditationAttribution::findOrFail($id);
+        $attribution->update($request->all());
 
-        return response()->json($user, 200);
+        return response()->json($attribution, 200);
     }
 
     public function delete($id)
