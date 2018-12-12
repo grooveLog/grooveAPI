@@ -80,4 +80,11 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('universal_visions/{id}', ['uses' => 'QuestionnaireController@delete']);
     $router->put('universal_visions/{id}', ['uses' => 'QuestionnaireController@update']);
 
+    //visions
+    $router->get('visions',  ['uses' => 'QuestionnaireController@getAllVisions']);
+    $router->get('visions/{id}', ['uses' => 'QuestionnaireController@getOneVision']);
+    $router->post('visions', ['uses' => 'QuestionnaireController@create']);
+    $router->delete('visions/{id}', ['uses' => 'QuestionnaireController@delete']);
+    $router->put('visions/{id}', ['uses' => 'QuestionnaireController@update']);
+
 });
