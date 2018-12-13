@@ -108,4 +108,17 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('goals/{id}', ['uses' => 'GoalController@delete']);
     $router->put('goals/{id}', ['uses' => 'GoalController@update']);
 
+    //universal grooves
+    $router->get('universal_grooves',  ['uses' => 'UniversalGrooveController@getAllUniversalGrooves']);
+    $router->get('universal_grooves/{id}', ['uses' => 'UniversalGrooveController@getOneUniversalGroove']);
+    $router->post('universal_grooves', ['uses' => 'UniversalGrooveController@create']);
+    $router->delete('universal_grooves/{id}', ['uses' => 'UniversalGrooveController@delete']);
+    $router->put('universal_grooves/{id}', ['uses' => 'UniversalGrooveController@update']);
+
+    //grooves
+    $router->get('grooves',  ['uses' => 'GrooveController@getAllGrooves']);
+    $router->get('grooves/{id}', ['uses' => 'GrooveController@getOneGroove']);
+    $router->post('grooves', ['uses' => 'GrooveController@create']);
+    $router->delete('grooves/{id}', ['uses' => 'GrooveController@delete']);
+    $router->put('grooves/{id}', ['uses' => 'GrooveController@update']);
 });
