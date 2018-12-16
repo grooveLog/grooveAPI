@@ -23,6 +23,19 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->post('users', ['uses' => 'UserController@create']);
     $router->delete('users/{id}', ['uses' => 'UserController@delete']);
     $router->put('users/{id}', ['uses' => 'UserController@update']);
+    $router->get('users/{id}/visions',  ['uses' => 'UserController@getUserVisions']);
+    $router->get('users/{id}/goals',  ['uses' => 'UserController@getUserGoals']);
+    $router->get('users/{id}/grooves',  ['uses' => 'UserController@getUserGrooves']);
+    $router->get('users/{id}/results',  ['uses' => 'UserController@getUserResults']);
+    $router->get('users/{id}/logs',  ['uses' => 'UserController@getUserLogs']);
+    $router->get('users/{id}/supporter_logs',  ['uses' => 'UserController@getSupporterLogsPerUser']);
+    $router->get('users/{id}/supporting_logs',  ['uses' => 'UserController@getSupportingLogsPerUser']);
+    $router->get('users/{id}/mentor_logs',  ['uses' => 'UserController@getMentorLogsPerUser']);
+    $router->get('users/{id}/mentoring_logs',  ['uses' => 'UserController@getMentoringLogsPerUser']);
+    $router->get('users/{id}/supporters',  ['uses' => 'UserController@getSupportersPerUser']);
+    $router->get('users/{id}/supporting',  ['uses' => 'UserController@getSupportingPerUser']);
+    $router->get('users/{id}/mentors',  ['uses' => 'UserController@getMentorsPerUser']);
+    $router->get('users/{id}/mentoring',  ['uses' => 'UserController@getMentoringPerUser']);
 
     //meditations
     $router->get('meditations',  ['uses' => 'MeditationController@getAllMeditations']);
