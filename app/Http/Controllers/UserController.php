@@ -61,7 +61,9 @@ class UserController extends Controller
 
     public function getUserVisions($id)
     {
-        //
+        return response()->json(User::find($id)
+            ->join('visions', 'users.id', '=', 'visions.user_id')
+        );
     }
 
     public function getUserGoals($id)
