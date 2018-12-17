@@ -18,7 +18,7 @@ class CreateUniversalVisionsTable extends Migration
             $table->integer('user_id');
             $table->string('name')->comment('Name of Vision (e.g. \'Be my own boss\')');
             $table->string('privacy', 12)->comment('PUBLIC or PRIVATE (or TEAM in Future)');
-            $table->boolean('endorsed')->comment('Whether endorsd by GrooveLog');
+            $table->boolean('endorsed')->comment('Whether endorsed by GrooveLog');
             $table->string('status', 12)->comment('ACTIVE / INACTIVE etc.');
             $table->integer('total_assignments')->comment('Counter for the number of times this vision has been used');
             $table->float('average_passion_rating')->comment('Average of all passion ratings');
