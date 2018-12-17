@@ -68,68 +68,75 @@ class UserController extends Controller
 
     public function getUserGoals($id)
     {
-        //
+        return response()->json(User::find($id)
+            ->join('goals', 'users.id', '=', 'goals.user_id')
+        );
     }
 
     public function getUserGrooves($id)
     {
-        //
+        return response()->json(User::find($id)
+            ->join('grooves', 'users.id', '=', 'grooves.user_id')
+        );
     }
 
     //return a users questionnaire results
-    public function getUserResults($id)
+    public function getUserAnswers($id)
     {
-        //
+        return response()->json(User::find($id)
+            ->join('answers', 'users.id', '=', 'answers.user_id')
+        );
     }
 
     //return logs per user
     public function getUserlogs($id)
     {
-        //
+        //need to create either a logs table or individual logs per type
+        //tables and models not defined yet
     }
 
     //return logs of your supporters
     public function getSupporterLogsPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
     //return logs of people who you are supporting
     public function getSupportingLogsPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
     //return logs of your Mentors
     public function getMentorLogsPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
     //return logs of people who you are mentoring
     public function getMentoringLogsPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
     public function getSupportersPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
     public function getSupportingPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
     public function getMentorsPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
     public function getMentoringPerUser($id)
     {
-        //
+        //tables and models not defined yet
     }
 
 }
