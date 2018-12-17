@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,6 +12,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
+        factory(App\User::class, 50)->create();
+
+        /*
         DB::table('users')->insert([
             'auth_id' => str_random(32),
             'email' => str_random(10).'@gmail.com',
@@ -21,5 +26,6 @@ class UsersTableSeeder extends Seeder
             'locale' => str_random(10),
             'status' => str_random(10),
         ]);
+        */
     }
 }

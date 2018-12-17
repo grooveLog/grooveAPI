@@ -13,7 +13,13 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
         'email' => $faker->email,
+        'username' => $faker->userName,
+        'firstname' =>$faker->firstName,
+        'lastname' => $faker->lastName,
+        'birthday' => $faker->dateTimeBetween('-80 years', '-16 years'),
+        'gender' => 'M',
+        'personal_summary' => $faker->realText(255),
+        'status' => 'ACTIVE'
     ];
 });
