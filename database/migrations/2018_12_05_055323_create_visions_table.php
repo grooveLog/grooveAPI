@@ -15,9 +15,9 @@ class CreateVisionsTable extends Migration
     {
         Schema::create('visions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('universal_vision_id');
-            $table->integer('vision_timescales_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('universal_vision_id')->unsigned();
+            $table->integer('vision_timescales_id')->unsigned();
             $table->string('personal_description')->comment('The personal implementation of the universal vision, how I will do it');
             $table->integer('probability')->comment('probability of achieving the vision e.g. 75%');
             $table->integer('passion')->comment('personal passion for the vision (stars) e.g. 05 10 15 20 25 30 35 40 45 50');

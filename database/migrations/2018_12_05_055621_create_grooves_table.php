@@ -15,8 +15,8 @@ class CreateGroovesTable extends Migration
     {
         Schema::create('grooves', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->comment('The ID of user who assigning the universal groove');
-            $table->integer('universal_groove_id');
+            $table->integer('user_id')->unsigned()->comment('The ID of user who assigning the universal groove');
+            $table->integer('universal_groove_id')->unsigned();
             $table->string('personal_description')->comment('The personal implementation of the universal groove, how I will do it');
             $table->integer('commitment')->comment('personal commitment - e.g. 75%');
             $table->integer('volume_amount')->comment('Optional, relates to volume_measurement e.g. 20 mins or 10 reps');

@@ -15,9 +15,9 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('questionnaire_id');
-            $table->integer('questions_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('questionnaire_id')->unsigned();
+            $table->integer('questions_id')->unsigned();
             $table->json('answers')->comment('Answers in JSON format');
             $table->dateTime('started_at')->comment('When questionnaire was started');
             $table->dateTime('submitted_at')->comment('When answers were submitted');
