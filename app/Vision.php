@@ -34,4 +34,10 @@ class Vision extends Model implements AuthenticatableContract, AuthorizableContr
     {
         return $this->belongsTo('App\User');
     }
+
+    public function universalVision()
+    {
+        return $this->belongsTo('App\UniversalVision');
+    }
+
 }

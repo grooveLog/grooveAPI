@@ -29,4 +29,12 @@ class UniversalGroove extends Model implements AuthenticatableContract, Authoriz
     protected $hidden = [
         'user_id',
     ];
+
+    /**
+     * Get the grooves using this universal grooves.
+     */
+    public function grooves()
+    {
+        return $this->hasMany('App\Groove');
+    }
 }

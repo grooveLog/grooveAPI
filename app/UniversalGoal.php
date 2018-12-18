@@ -29,4 +29,13 @@ class UniversalGoal extends Model implements AuthenticatableContract, Authorizab
     protected $hidden = [
         'user_id',
     ];
+
+    /**
+     * Get the goals using this universal goal.
+     */
+    public function goals()
+    {
+        return $this->hasMany('App\Goal');
+    }
+    
 }

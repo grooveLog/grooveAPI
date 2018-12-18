@@ -36,4 +36,10 @@ class Groove extends Model implements AuthenticatableContract, AuthorizableContr
     {
         return $this->belongsTo('App\User');
     }
+
+    public function universalGroove()
+    {
+        return $this->belongsTo('App\UniversalGroove');
+    }
+
 }

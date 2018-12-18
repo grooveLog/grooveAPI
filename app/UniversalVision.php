@@ -29,4 +29,13 @@ class UniversalVision extends Model implements AuthenticatableContract, Authoriz
     protected $hidden = [
         //
     ];
+
+    /**
+     * Get the visions using this universal vision.
+     */
+    public function visions()
+    {
+        return $this->hasMany('App\Vision');
+    }
+
 }

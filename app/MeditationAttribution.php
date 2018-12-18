@@ -29,4 +29,10 @@ class MeditationAttribution extends Model implements AuthenticatableContract, Au
     protected $hidden = [
         //
     ];
+
+    public function meditations()
+    {
+        return $this->hasMany('App\Meditations');
+    }
+
 }

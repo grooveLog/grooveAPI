@@ -29,4 +29,10 @@ class Meditation extends Model implements AuthenticatableContract, AuthorizableC
     protected $hidden = [
         //
     ];
+
+    public function meditationAttribution()
+    {
+        return $this->belongsTo('App\MeditationAttribution');
+    }
+
 }
