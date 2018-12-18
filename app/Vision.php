@@ -27,6 +27,11 @@ class Vision extends Model implements AuthenticatableContract, AuthorizableContr
      * @var array
      */
     protected $hidden = [
-        'user_id', 'universal_vision_id', 'vision_timescales_id', ''
+        'user_id', 'universal_vision_id', 'vision_timescales_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

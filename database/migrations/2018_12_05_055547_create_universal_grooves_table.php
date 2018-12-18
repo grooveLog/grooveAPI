@@ -15,6 +15,7 @@ class CreateUniversalGroovesTable extends Migration
     {
         Schema::create('universal_grooves', function (Blueprint $table) {
             $table->increments('id');
+            $table->foreign('user_id')->references('id')->on('users')->comment('ID of user who submitted the goal');
             $table->string('name')->comment('Name of Groove (e.g. \'Running\' or \'Practice Scales\' or \'Fasting\')');
             $table->string('privacy')->comment('PUBLIC or PRIVATE (or TEAM in Future)');
             $table->boolean('endorsed')->comment('Whether endorsd by GrooveLog');

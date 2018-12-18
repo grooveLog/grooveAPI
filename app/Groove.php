@@ -30,4 +30,10 @@ class Groove extends Model implements AuthenticatableContract, AuthorizableContr
     protected $hidden = [
         'user_id', 'universal_groove_id', 'completed_at'
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -29,4 +29,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'auth_id', 'authentication_method', 'status'
     ];
+
+    public function visions()
+    {
+        return $this->hasMany('App\Vision');
+    }
+
+    public function goals()
+    {
+        return $this->hasMany('App\Goal');
+    }
+
+    public function grooves()
+    {
+        return $this->hasMany('App\Groove');
+    }
 }

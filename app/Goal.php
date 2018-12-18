@@ -29,4 +29,10 @@ class Goal extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'user_id', 'universal_goal_id', 'completed_at'
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

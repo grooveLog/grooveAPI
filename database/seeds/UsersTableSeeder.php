@@ -12,20 +12,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
-        factory(App\User::class, 50)->create();
-
-        /*
-        DB::table('users')->insert([
-            'auth_id' => str_random(32),
-            'email' => str_random(10).'@gmail.com',
-            'username' => str_random(10),
-            'firstname' => str_random(10),
-            'lastname' => str_random(10),
-            'personal_summary' => str_random(10),
-            'locale' => str_random(10),
-            'status' => str_random(10),
-        ]);
-        */
+        
+        $users = factory(App\User::class, 10)
+            ->create()
+            ->each(function ($user) {
+                $user->visions()->save(factory(App\Vision::class)->make());
+                $user->goals()->save(factory(App\Goal::class)->make());
+                $user->grooves()->save(factory(App\Groove::class)->make());
+            });
+        
     }
 }
