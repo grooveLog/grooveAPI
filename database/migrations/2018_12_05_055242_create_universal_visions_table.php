@@ -15,7 +15,7 @@ class CreateUniversalVisionsTable extends Migration
     {
         Schema::create('universal_visions', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id');
             $table->string('name')->comment('Name of Vision (e.g. \'Be my own boss\')');
             $table->string('privacy', 12)->comment('PUBLIC or PRIVATE (or TEAM in Future)');
             $table->boolean('endorsed')->comment('Whether endorsed by GrooveLog');
@@ -23,6 +23,9 @@ class CreateUniversalVisionsTable extends Migration
             $table->integer('total_assignments')->comment('Counter for the number of times this vision has been used');
             $table->float('average_passion_rating')->comment('Average of all passion ratings');
             $table->timestamps();
+
+            //foreign keys
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

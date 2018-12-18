@@ -15,9 +15,12 @@ class CreateUserAuditsTable extends Migration
     {
         Schema::create('user_audits', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id');
             $table->string('activity', 32)->comment('References a range of possible activities (e.g. Login, Failed Login, Privacy Settings Change etc...)');
             $table->timestamps();
+
+            //foreign keys
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

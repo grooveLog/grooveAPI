@@ -15,11 +15,14 @@ class CreateMeditationsTable extends Migration
     {
         Schema::create('meditations', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('meditation_attribution_id')->references('id')->on('meditation_attributions');
+            $table->integer('meditation_attribution_id');
             $table->text('text')->comment('The quote');
             $table->integer('impressions')->comment('number of times a meditation has been rendered');
             $table->integer('likes')->comment('number of Groovies received');
             $table->timestamps();
+
+            //foreign keys
+            $table->foreign('meditation_attribution_id')->references('id')->on('meditation_attributions');
         });
     }
 

@@ -15,8 +15,8 @@ class CreateGroovesTable extends Migration
     {
         Schema::create('grooves', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('user_id')->references('id')->on('users')->comment('The ID of user who assigning the universal groove');
-            $table->foreign('universal_groove_id')->references('id')->on('universal_grooves');
+            $table->integer('user_id')->comment('The ID of user who assigning the universal groove');
+            $table->integer('universal_groove_id');
             $table->string('personal_description')->comment('The personal implementation of the universal groove, how I will do it');
             $table->integer('commitment')->comment('personal commitment - e.g. 75%');
             $table->integer('volume_amount')->comment('Optional, relates to volume_measurement e.g. 20 mins or 10 reps');
@@ -26,6 +26,10 @@ class CreateGroovesTable extends Migration
             $table->string('frequency_period', 16)->comment('e.g. \'per week\', \'per day\', or \'per month\'');
             $table->string('status', 12)->comment('e.g. ACTIVE / PAUSED etc');
             $table->timestamps();
+
+            //foreign keys
+            $table->foreign('user_id')->references('id')->on('users')->comment('The ID of user who assigning the universal groove');
+            $table->foreign('universal_groove_id')->references('id')->on('universal_grooves');
         });
     }
 
