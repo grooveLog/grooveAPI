@@ -88,9 +88,22 @@ $factory->define(App\Answer::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\VisionTimescale::class, function (Faker\Generator $faker) {
+    return [
+        'text' => $faker->realText(16),
+        'numeric' => $faker->random_int(1, 50),
+    ];
+});
+
 $factory->define(App\UniversalVision::class, function (Faker\Generator $faker) {
     return [
-        //
+        'user_id' => random_int(0, 9),
+        'name' => $faker->realText(16),
+        'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
+        'endorsed' => $faker->boolean(),
+        'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
+        'total_assignments' => 0,
+        'average_passion_rating' => 0,
         ];
 });
 
@@ -107,11 +120,6 @@ $factory->define(App\Vision::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\VisionTimescale::class, function (Faker\Generator $faker) {
-    return [
-        //
-    ];
-});
 
 $factory->define(App\UniversalGoal::class, function (Faker\Generator $faker) {
     return [
