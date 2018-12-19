@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('gender', 1)->comment('e.g. MALE M, FEMALE F - OTHER? (non-mandatory');
             $table->text('personal_summary')->comment('user submitted description of who they are and why they\'re using grooveLog');
             $table->string('locale');
+            $table->string('image');
             $table->string('status', 12)->comment('\'ACTIVE\', \'INACITVE\', \'GROOVER\' etc...');
             $table->timestamps();
         });
