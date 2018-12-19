@@ -63,13 +63,21 @@ $factory->define(App\Questionnaire::class, function (Faker\Generator $faker) {
 
 $factory->define(App\QuestionnaireRating::class, function (Faker\Generator $faker) {
     return [
-        //
+        'user_id' => random_int(0, 9),
+        'questionnaire_id' => random_int(0, 9),
+        'questions_id' => random_int(0, 9),  //this won't work - sort it out, can't be random
+        'rating' => random_int(1, 5),
+        'comment' => $faker->realText(100)
     ];
 });
 
 $factory->define(App\Question::class, function (Faker\Generator $faker) {
     return [
-        //
+        'questionnaire_id' => random_int(0, 9),
+        'user_id' => random_int(0, 9),
+        'version' => 1,
+        'questions' => '', //Need some JSON
+        'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
     ];
 });
 
