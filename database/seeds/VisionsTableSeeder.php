@@ -12,8 +12,7 @@ class VisionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('visions')->insert([
-            //
-        ]);
+        $visions = factory(App\Vision::class, 10)
+            ->create();
     }
 }

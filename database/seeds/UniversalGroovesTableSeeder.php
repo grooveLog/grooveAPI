@@ -12,8 +12,7 @@ class UniversalGroovesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('universal_grooves')->insert([
-            //
-        ]);
+        $universalGrooves = factory(App\UniversalGroove::class, 10)
+            ->create();
     }
 }

@@ -32,7 +32,7 @@ class MeditationAttribution extends Model implements AuthenticatableContract, Au
 
     public function meditations()
     {
-        return $this->hasMany('App\Meditations');
+        return $this->hasMany('App\Meditation');
     }
 
 }

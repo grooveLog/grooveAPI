@@ -12,8 +12,7 @@ class GroovesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('grooves')->insert([
-            //
-        ]);
+        $Grooves = factory(App\Groove::class, 10)
+            ->create();
     }
 }

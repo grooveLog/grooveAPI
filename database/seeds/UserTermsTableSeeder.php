@@ -12,8 +12,7 @@ class UserTermsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_terms')->insert([
-            //
-        ]);
+        $userTerms = factory(App\UserTerm::class, 10)
+            ->create();
     }
 }

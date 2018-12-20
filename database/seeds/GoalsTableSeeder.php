@@ -12,8 +12,7 @@ class GoalsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('goals')->insert([
-            //
-        ]);
+        $goals = factory(App\Goal::class, 10)
+            ->create();
     }
 }

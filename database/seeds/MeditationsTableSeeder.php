@@ -12,8 +12,7 @@ class MeditationsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('meditations')->insert([
-            //
-        ]);
+        $meditations = factory(App\Meditation::class, 10)
+            ->create();
     }
 }

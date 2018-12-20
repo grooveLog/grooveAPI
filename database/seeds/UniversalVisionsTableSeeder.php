@@ -12,8 +12,7 @@ class UniversalVisionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('universal_visions')->insert([
-            //
-        ]);
+        $universalVisions = factory(App\UniversalVision::class, 10)
+            ->create();
     }
 }

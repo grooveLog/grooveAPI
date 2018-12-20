@@ -26,7 +26,7 @@ class GoalController extends Controller
             'personal_description' => 'alpha_dash|max:255',
             'progress' => 'integer',
             'reward' => 'integer',
-            'goal_from_date' => '',
+            'goal_date_from' => '',
             'goal_date_to' => '',
             'status' => 'required|alpha_dash|max:12',
         ]);
@@ -43,7 +43,7 @@ class GoalController extends Controller
             'personal_description' => 'alpha_dash|max:255',
             'progress' => 'integer',
             'reward' => 'integer',
-            'goal_from_date' => '',
+            'goal_date_from' => '',
             'goal_date_to' => '',
             'status' => 'required|alpha_dash|max:12',
             'completed_at' => ''

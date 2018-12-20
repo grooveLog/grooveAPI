@@ -12,8 +12,7 @@ class VisionTimescalesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vision_timescales')->insert([
-            //
-        ]);
+        $visionTimescales = factory(App\VisionTimescale::class, 10)
+            ->create();
     }
 }

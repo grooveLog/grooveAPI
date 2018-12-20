@@ -12,8 +12,7 @@ class UniversalGoalsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('universal_goals')->insert([
-            //
-        ]);
+        $universalGoals = factory(App\UniversalGoal::class, 10)
+            ->create();
     }
 }
