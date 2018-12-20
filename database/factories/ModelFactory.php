@@ -91,7 +91,7 @@ $factory->define(App\Answer::class, function (Faker\Generator $faker) {
 $factory->define(App\VisionTimescale::class, function (Faker\Generator $faker) {
     return [
         'text' => $faker->realText(16),
-        'numeric' => $faker->random_int(1, 50),
+        'numeric' => random_int(1, 50),
     ];
 });
 
@@ -123,24 +123,53 @@ $factory->define(App\Vision::class, function (Faker\Generator $faker) {
 
 $factory->define(App\UniversalGoal::class, function (Faker\Generator $faker) {
     return [
-        //
+        'user_id' => random_int(0, 9),
+        'name' => $faker->realText(32),
+        'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
+        'endorsed' => $faker->boolean(),
+        'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
+        'total_assignments' => 0,
+        'average_reward_rating' => 0,
     ];
 });
 
 $factory->define(App\Goal::class, function (Faker\Generator $faker) {
     return [
-        //
+        'user_id' => random_int(0, 9),
+        'universal_goal_id' => random_int(0, 9),
+        'personal_description' => $faker->realText(32),
+        'progress' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
+        'reward' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
+        'goal_date_from' => $faker->dateTimeBetween('-1 years', 'now'),
+        'goal_date_to' => $faker->dateTimeBetween('now', '+1 years'),
+        'status' => $faker->randomElement(['ACTIVE', 'INACTIVE', 'COMPLETED', 'FAILED', 'POSTPONED']),
+        //'completed_at' =>
     ];
 });
 
 $factory->define(App\UniversalGroove::class, function (Faker\Generator $faker) {
     return [
-        //
+        'user_id' => random_int(0, 9),
+        'name' => $faker->realText(32),
+        'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
+        'endorsed' => $faker->boolean(),
+        'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
+        'total_assignments' => 0,
+        'average_commitment_rating' => 0,
     ];
 });
 
 $factory->define(App\Groove::class, function (Faker\Generator $faker) {
     return [
-        //
+        'user_id' => random_int(0, 9),
+        'universal_groove_id' => random_int(0, 9),
+        'personal_description' => $faker->realText(32),
+        'commitment' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
+        'volume_amount' => $faker->randomElement([1,1,1,1,1, 2, 2, 3, 5,10,15,20, 25, 30]),
+        'volume_measurement' => $faker->randomElement(['REPS', 'SESSIONS', 'MINS']),
+        'frequency_prefix' => $faker->randomElement(['AT_LEAST', 'UP_TO', '', '', '']),
+        'frequency_number' => random_int(1, 5),
+        'frequency_period' => $faker->randomElement(['PER_WEEK', 'PER_MONTH', 'DAILY', 'PER_DAY']),
+        'status' => $faker->randomElement(['ACTIVE', 'INACTIVE', 'PAUSED']),
     ];
 });

@@ -21,6 +21,7 @@ class CreateUniversalGroovesTable extends Migration
             $table->boolean('endorsed')->comment('Whether endorsd by GrooveLog');
             $table->string('status', 12)->comment('ACTIVE / INACTIVE etc.');
             $table->integer('total_assignments')->comment('Counter for the number of times this groove has been used');
+            $table->float('average_commitment_rating')->comment('Average of all commitment ratings');
             $table->timestamps();
 
             //foreign keys
