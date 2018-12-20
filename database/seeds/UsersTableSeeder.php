@@ -14,12 +14,13 @@ class UsersTableSeeder extends Seeder
     {
         
         $users = factory(App\User::class, 10)
-            ->create()
-            ->each(function ($user) {
+            ->create();
+          /*  ->each(function ($user) {
                 $user->visions()->save(factory(App\Vision::class)->make());
                 $user->goals()->save(factory(App\Goal::class)->make());
                 $user->grooves()->save(factory(App\Groove::class)->make());
             });
+          */
         
     }
 }

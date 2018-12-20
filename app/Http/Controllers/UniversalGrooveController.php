@@ -6,7 +6,7 @@ use App\UniversalGoal;
 use Illuminate\Http\Request;
 
 
-class UniversalGoalController extends Controller
+class UniversalGrooveController extends Controller
 {
 
     public function getAllUniversalGoals()
