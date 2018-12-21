@@ -79,7 +79,7 @@ $factory->define(App\Question::class, function (Faker\Generator $faker) {
         'questionnaire_id' => random_int(1, 10),
         'user_id' => random_int(1, 10),
         'version' => 1,
-        'questions' => '', //Need some JSON
+        'questions' => "{}", //Need some JSON
         'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
     ];
 });

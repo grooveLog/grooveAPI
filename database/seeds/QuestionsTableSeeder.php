@@ -12,8 +12,7 @@ class QuestionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('questions')->insert([
-            //
-        ]);
+        $questions = factory(App\Question::class, 10)
+            ->create();
     }
 }

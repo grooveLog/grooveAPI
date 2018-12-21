@@ -12,8 +12,7 @@ class QuestionnaireRatingsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('questionnaire_ratings')->insert([
-            //
-        ]);
+        $questionnaireRatings = factory(App\QuestionnaireRating::class, 10)
+            ->create();
     }
 }

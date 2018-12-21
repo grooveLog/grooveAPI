@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             GoalsTableSeeder::class,
             UniversalGroovesTableSeeder::class,
             GroovesTableSeeder::class,
+            QuestionnairesTableSeeder::class,
+            QuestionsTableSeeder::class,
+            QuestionnaireRatingsTableSeeder::class,
         ]);
     }
 }

@@ -12,8 +12,7 @@ class QuestionnairesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('questionnaires')->insert([
-            //
-        ]);
+        $questionnaires = factory(App\Questionnaire::class, 10)
+            ->create();
     }
 }
