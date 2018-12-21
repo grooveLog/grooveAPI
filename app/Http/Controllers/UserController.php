@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Vision;
+use App\Goal;
+use App\Groove;
+use App\Answer;
 use Illuminate\Http\Request;
 
 
@@ -61,35 +65,35 @@ class UserController extends Controller
 
     public function getUserVisions($id)
     {
-        return response()->json(User::find($id)
-            ->join('visions', 'users.id', '=', 'visions.user_id')
+        return response()->json(Vision::where('visions.user_id','=', $id)
+            ->get()
         );
     }
 
     public function getUserGoals($id)
     {
-        return response()->json(User::find($id)
-            ->join('goals', 'users.id', '=', 'goals.user_id')
+        return response()->json(Goal::where('goals.user_id','=', $id)
+            ->get()
         );
     }
 
     public function getUserGrooves($id)
     {
-        return response()->json(User::find($id)
-            ->join('grooves', 'users.id', '=', 'grooves.user_id')
+        return response()->json(Groove::where('grooves.user_id','=', $id)
+            ->get()
         );
     }
 
     //return a users questionnaire results
     public function getUserAnswers($id)
     {
-        return response()->json(User::find($id)
-            ->join('answers', 'users.id', '=', 'answers.user_id')
+        return response()->json(Answer::where('answers.user_id','=', $id)
+            ->get()
         );
     }
 
     //return logs per user
-    public function getUserlogs($id)
+    public function getUserLogs($id)
     {
         //need to create either a logs table or individual logs per type
         //tables and models not defined yet
