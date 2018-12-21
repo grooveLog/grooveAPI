@@ -25,11 +25,14 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
+            'auth_id' => 'required',
             'username' => 'required|alpha_dash|max:255',
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
             'email' => 'required|email|unique:users|max:255',
             'gender' => 'alpha|max:1',
+            'birthday'=> '',
+            'image' => '',
             'locale' => 'required',
             'status' => 'required'
         ]);
