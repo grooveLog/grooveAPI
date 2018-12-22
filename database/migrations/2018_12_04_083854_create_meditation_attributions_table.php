@@ -16,7 +16,7 @@ class CreateMeditationAttributionsTable extends Migration
         Schema::create('meditation_attributions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique()->comment('name of the person e.g.\'Friedrich Nietzsche\'');
-            $table->string('image')->comment('ID of an image asset in cloud storage');
+            $table->string('image')->nullable()->comment('ID of an image asset in cloud storage');
             $table->timestamps();
         });
     }

@@ -18,9 +18,9 @@ class CreateQuestionnairesTable extends Migration
             $table->integer('user_id')->unsigned()->comment('The user who created/contributed the questionnaire');
             $table->string('type', 32)->comment('Declare questionnaire type/format, which will determine how it is read / displayed etc');
             $table->string('title')->comment('A name/title for the questionnaire');
-            $table->text('description');
-            $table->text('instructions')->comment('Instructions on how to complete the questionnaire');
-            $table->string('image')->comment('ID of an image asset in cloud storage');
+            $table->text('description')->nullable();
+            $table->text('instructions')->nullable()->comment('Instructions on how to complete the questionnaire');
+            $table->string('image')->nullable()->comment('ID of an image asset in cloud storage');
             $table->timestamps();
 
             //foreign keys

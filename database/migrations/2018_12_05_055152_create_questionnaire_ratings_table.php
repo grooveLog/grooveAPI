@@ -19,7 +19,7 @@ class CreateQuestionnaireRatingsTable extends Migration
             $table->integer('questionnaire_id')->unsigned();
             $table->integer('questions_id')->unsigned();
             $table->integer('rating')->comment('e.g. rating on a scale of 1 to 5 (e.g. stars)');
-            $table->text('comment')->comment('User comment');
+            $table->text('comment')->nullable()->comment('User comment');
             $table->timestamps();
 
             //foreign keys

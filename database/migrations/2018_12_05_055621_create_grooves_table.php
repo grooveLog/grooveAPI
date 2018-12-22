@@ -17,14 +17,14 @@ class CreateGroovesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->comment('The ID of user who assigning the universal groove');
             $table->integer('universal_groove_id')->unsigned();
-            $table->string('personal_description')->comment('The personal implementation of the universal groove, how I will do it');
-            $table->integer('commitment')->comment('personal commitment - e.g. 75%');
+            $table->string('personal_description')->nullable()->comment('The personal implementation of the universal groove, how I will do it');
+            $table->integer('commitment')->default(5)->comment('personal commitment - e.g. 75%');
             $table->integer('volume_amount')->nullable()->comment('Optional, relates to volume_measurement e.g. 20 mins or 10 reps');
             $table->string('volume_measurement', 12)->nullable()->comment('Optional, relates to volume_amount - mins or reps');
-            $table->string('frequency_prefix', 12)->comment('frequency_prefix');
-            $table->integer('frequency_number')->comment('number of times performed (e.g. \'once\' per week / \'twice\' per week\')');
-            $table->string('frequency_period', 16)->comment('e.g. \'per week\', \'per day\', or \'per month\'');
-            $table->string('status', 12)->comment('e.g. ACTIVE / PAUSED etc');
+            $table->string('frequency_prefix', 12)->nullable()->comment('frequency_prefix');
+            $table->integer('frequency_number')->nullable()->comment('number of times performed (e.g. \'once\' per week / \'twice\' per week\')');
+            $table->string('frequency_period', 16)->nullable()->comment('e.g. \'per week\', \'per day\', or \'per month\'');
+            $table->string('status', 12)->default('ACTIVE')->comment('e.g. ACTIVE / PAUSED etc');
             $table->timestamps();
 
             //foreign keys

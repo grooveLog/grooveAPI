@@ -16,7 +16,7 @@ class CreateVisionTimescalesTable extends Migration
         Schema::create('vision_timescales', function (Blueprint $table) {
             $table->increments('id');
             $table->string('text');
-            $table->integer('numeric')->comment('numeric representation of the text, e.g. how far in the future is the vision');
+            $table->integer('numeric')->nullable()->comment('numeric representation of the text, e.g. how far in the future is the vision');
             $table->timestamps();
         });
     }

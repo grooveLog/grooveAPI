@@ -17,8 +17,8 @@ class CreateMeditationsTable extends Migration
             $table->increments('id');
             $table->integer('meditation_attribution_id')->unsigned();
             $table->text('text')->comment('The quote');
-            $table->integer('impressions')->comment('number of times a meditation has been rendered');
-            $table->integer('likes')->comment('number of Groovies received');
+            $table->integer('impressions')->default(0)->comment('number of times a meditation has been rendered');
+            $table->integer('likes')->default(0)->comment('number of Groovies received');
             $table->timestamps();
 
             //foreign keys

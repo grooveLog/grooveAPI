@@ -18,11 +18,11 @@ class CreateVisionsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('universal_vision_id')->unsigned();
             $table->integer('vision_timescales_id')->unsigned();
-            $table->string('personal_description')->comment('The personal implementation of the universal vision, how I will do it');
-            $table->integer('probability')->comment('probability of achieving the vision e.g. 75%');
-            $table->integer('passion')->comment('personal passion for the vision (stars) e.g. 05 10 15 20 25 30 35 40 45 50');
-            $table->string('status', 12)->comment('e.g. COMPLETED, ABANDONED, POSTPONED etc');
-            $table->dateTime('completed_at')->comment('When completed');
+            $table->string('personal_description')->nullable()->comment('The personal implementation of the universal vision, how I will do it');
+            $table->integer('probability')->default(5)->comment('probability of achieving the vision e.g. 75%');
+            $table->integer('passion')->default(5)->comment('personal passion for the vision (stars) e.g. 05 10 15 20 25 30 35 40 45 50');
+            $table->string('status', 12)->default('ACTIVE')->comment('e.g. COMPLETED, ABANDONED, POSTPONED etc');
+            $table->dateTime('completed_at')->nullable()->comment('When completed');
             $table->timestamps();
 
             //foreign keys
