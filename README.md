@@ -30,3 +30,19 @@ NOTE: It is important to establish whether the above are public or private, depe
 
 ### questionnaires
 users/1/questionnaire_results
+
+
+# CLI Notes:
+Create the schema 'groovelog' - e.g. via workbench
+
+php artisan migrate
+
+composer dump-autoload
+
+php artisan db:seed
+
+
+Serve:
+PHP -S localhost:8000 -t public
+
+http://localhost:8000/v1/users
