@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('uid')->unique()->comment('hash from google');
             $table->string('authentication_method', 16)->comment('if available from google e.g. Facebook; Email etc');
-            $table->string('email')->required();;
+            $table->string('email')->required();
             $table->string('display_name')->required();
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
