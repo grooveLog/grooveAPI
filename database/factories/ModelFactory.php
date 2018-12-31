@@ -15,9 +15,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
     return [
         'email' => $faker->email,
-        'auth_id' => $faker->md5,
+        'uid' => $faker->md5,
         'authentication_method' => $faker->randomElement(['FACEBOOK', 'TWITTER', 'EMAIL']),
-        'username' => $faker->userName,
+        'display_name' => $faker->userName,
         'firstname' =>$faker->firstName,
         'lastname' => $faker->lastName,
         'birthday' => $faker->dateTimeBetween('-80 years', '-16 years'),
