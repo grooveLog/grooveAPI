@@ -15,7 +15,7 @@ class CreateGoalsTable extends Migration
     {
         Schema::create('goals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->comment('The ID of user who assigning the universal goal');
+            $table->string('user_id')->comment('The ID of user who assigning the universal goal');
             $table->integer('universal_goal_id')->unsigned();
             $table->string('personal_description')->comment('The personal implementation of the universal goal, how I will do it');
             $table->integer('progress')->default(0)->comment('goal progress, how close to achievement e.g. 50%%');

@@ -15,7 +15,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->string('user_id');
             $table->integer('questionnaire_id')->unsigned();
             $table->integer('questions_id')->unsigned();
             $table->json('answers')->nullable()->comment('Answers in JSON format');

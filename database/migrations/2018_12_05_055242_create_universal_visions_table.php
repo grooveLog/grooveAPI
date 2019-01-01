@@ -15,7 +15,7 @@ class CreateUniversalVisionsTable extends Migration
     {
         Schema::create('universal_visions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->string('user_id');
             $table->string('name')->comment('Name of Vision (e.g. \'Be my own boss\')');
             $table->string('privacy', 12)->default('PUBLIC')->comment('PUBLIC or PRIVATE (or TEAM in Future)');
             $table->boolean('endorsed')->default(0)->comment('Whether endorsed by GrooveLog');

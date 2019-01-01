@@ -16,7 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('questionnaire_id')->unsigned();
-            $table->integer('user_id')->unsigned()->comment('User ID of who committed the questionnaire update');
+            $table->string('user_id')->comment('User ID of who committed the questionnaire update');
             $table->integer('version')->default(1)->comment('Allows version control over questionnaires');
             $table->json('questions')->comment('Full Questionnaire in JSON Format');
             $table->string('status', 12)->default('ACTIVE')->comment('Status of questionnaire ACTIVE / INACTIVE etc');

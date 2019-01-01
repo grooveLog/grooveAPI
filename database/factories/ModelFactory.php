@@ -11,6 +11,9 @@
 |
 */
 
+
+
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
 
     return [
@@ -54,8 +57,17 @@ $factory->define(App\MeditationAttribution::class, function (Faker\Generator $fa
 });
 
 $factory->define(App\Questionnaire::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker-> randomElement($userIds),
         'type' => $faker->randomElement(['FORMAT1', 'FORMAT2', 'FORMAT3']),
         'title' => $faker->realText(32),
         'description' => $faker->realText(500),
@@ -65,8 +77,17 @@ $factory->define(App\Questionnaire::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\QuestionnaireRating::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'questionnaire_id' => random_int(1, 10),
         'questions_id' => random_int(1, 10),  //this won't work - sort it out, can't be random
         'rating' => random_int(1, 5),
@@ -75,9 +96,18 @@ $factory->define(App\QuestionnaireRating::class, function (Faker\Generator $fake
 });
 
 $factory->define(App\Question::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
         'questionnaire_id' => random_int(1, 10),
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'version' => 1,
         'questions' => "{}", //Need some JSON
         'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
@@ -99,8 +129,17 @@ $factory->define(App\VisionTimescale::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\UniversalVision::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'name' => $faker->realText(16),
         'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
         'endorsed' => $faker->boolean(),
@@ -111,13 +150,22 @@ $factory->define(App\UniversalVision::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Vision::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
         'personal_description' => $faker->realText(255),
         'probability' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
         'passion' =>$faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
         'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
         'completed_at' => $faker->dateTime(),
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'universal_vision_id' => random_int(1, 10),
         'vision_timescales_id'  => random_int(1, 10),
     ];
@@ -125,8 +173,17 @@ $factory->define(App\Vision::class, function (Faker\Generator $faker) {
 
 
 $factory->define(App\UniversalGoal::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'name' => $faker->realText(32),
         'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
         'endorsed' => $faker->boolean(),
@@ -137,8 +194,17 @@ $factory->define(App\UniversalGoal::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Goal::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'universal_goal_id' => random_int(1, 10),
         'personal_description' => $faker->realText(32),
         'progress' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
@@ -151,8 +217,17 @@ $factory->define(App\Goal::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\UniversalGroove::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'name' => $faker->realText(32),
         'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
         'endorsed' => $faker->boolean(),
@@ -163,8 +238,17 @@ $factory->define(App\UniversalGroove::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Groove::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
     return [
-        'user_id' => random_int(1, 10),
+        'user_id' => $faker->randomElement($userIds),
         'universal_groove_id' => random_int(1, 10),
         'personal_description' => $faker->realText(32),
         'commitment' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
