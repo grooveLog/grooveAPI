@@ -15,7 +15,7 @@ class CreateQuestionnairesTable extends Migration
     {
         Schema::create('questionnaires', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->comment('The user who created/contributed the questionnaire');
+            $table->string('user_id')->comment('The user who created/contributed the questionnaire');
             $table->string('type', 32)->comment('Declare questionnaire type/format, which will determine how it is read / displayed etc');
             $table->string('title')->comment('A name/title for the questionnaire');
             $table->text('description')->nullable();

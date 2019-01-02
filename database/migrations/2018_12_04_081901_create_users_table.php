@@ -14,8 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('uid')->unique()->comment('hash from google');
+            $table->string('id')->unique()->comment('hash from google');
             $table->string('authentication_method', 16)->comment('if available from google e.g. Facebook; Email etc');
             $table->string('email')->required();
             $table->string('display_name')->required();
@@ -28,6 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->string('status', 12)->default('ACTIVE')->comment('\'ACTIVE\', \'INACITVE\', \'GROOVER\' etc...');
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 

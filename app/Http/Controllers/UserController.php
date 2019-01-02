@@ -25,7 +25,7 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'uid' => 'required',
+            'id' => 'required',
             'display_name' => 'required|alpha_dash|max:255',
             'firstname' => 'max:255',
             'lastname' => 'max:255',
