@@ -45,10 +45,10 @@ class UserController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'display_name' => 'required|alpha_dash|max:255',
+            'display_name' => 'alpha_dash|max:255',
             'firstname' => 'max:255',
             'lastname' => 'max:255',
-            'email' => 'required|email|unique:users|max:255',
+            'email' => 'email|unique:users|max:255',
             'gender' => 'max:1',
             'locale' => '',
             'status' => ''
