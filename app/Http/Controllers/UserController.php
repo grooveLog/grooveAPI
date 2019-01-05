@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'id' => 'required',
-            'display_name' => 'required|alpha_dash|max:255',
+            'display_name' => 'required|max:255',
             'firstname' => 'max:255',
             'lastname' => 'max:255',
             'email' => 'required|email|unique:users|max:255',
@@ -45,11 +45,13 @@ class UserController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'display_name' => 'alpha_dash|max:255',
+            'display_name' => 'max:255',
             'firstname' => 'max:255',
             'lastname' => 'max:255',
             'email' => 'email|unique:users|max:255',
             'gender' => 'max:1',
+            'birthday'=> '',
+            'image' => '',
             'locale' => '',
             'status' => ''
         ]);

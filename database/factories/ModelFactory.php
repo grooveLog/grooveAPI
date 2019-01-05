@@ -18,7 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
     return [
         'email' => $faker->email,
-        'uid' => $faker->md5,
+        //'uid' => $faker->md5,
         'authentication_method' => $faker->randomElement(['FACEBOOK', 'TWITTER', 'EMAIL']),
         'display_name' => $faker->userName,
         'firstname' =>$faker->firstName,
