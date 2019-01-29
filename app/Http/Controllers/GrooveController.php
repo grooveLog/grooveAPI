@@ -22,7 +22,7 @@ class GrooveController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'universal_goal_id' => 'required|integer',
+            'universal_groove_id' => 'required|integer',
             'personal_description' => 'alpha_dash|max:255',
             'commitment' => 'integer',
             'volume_amount' => 'integer',
@@ -41,7 +41,7 @@ class GrooveController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'universal_goal_id' => 'required|integer',
+            'universal_groove_id' => 'required|integer',
             'personal_description' => 'alpha_dash|max:255',
             'commitment' => 'integer',
             'volume_amount' => 'integer',

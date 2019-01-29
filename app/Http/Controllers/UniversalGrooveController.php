@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\UniversalGoal;
+use App\UniversalGroove;
 use Illuminate\Http\Request;
 
 
 class UniversalGrooveController extends Controller
 {
 
-    public function getAllUniversalGoals()
+    public function getAllUniversalGrooves()
     {
-        return response()->json(UniversalGoal::all());
+        return response()->json(UniversalGroove::all());
     }
 
-    public function getOneUniversalGoal($id)
+    public function getOneUniversalGroove($id)
     {
-        return response()->json(UniversalGoal::find($id));
+        return response()->json(UniversalGroove::find($id));
     }
 
     public function create(Request $request)
@@ -28,7 +28,7 @@ class UniversalGrooveController extends Controller
             'status' => 'required',
         ]);
 
-        $universalGroove = UniversalGoal::create($request->all());
+        $universalGroove = UniversalGroove::create($request->all());
 
         return response()->json($universalGroove, 201);
     }
@@ -42,7 +42,7 @@ class UniversalGrooveController extends Controller
             'status' => 'required',
         ]);
 
-        $universalGroove = UniversalGoal::findOrFail($id);
+        $universalGroove = UniversalGroove::findOrFail($id);
         $universalGroove->update($request->all());
 
         return response()->json($universalGroove, 200);
@@ -50,7 +50,7 @@ class UniversalGrooveController extends Controller
 
     public function delete($id)
     {
-        UniversalGoal::findOrFail($id)->delete();
+        UniversalGroove::findOrFail($id)->delete();
         return response('Successfully Deleted Universal Groove', 200);
     }
 
