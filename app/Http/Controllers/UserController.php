@@ -70,8 +70,11 @@ class UserController extends Controller
 
     public function getUserVisions($id)
     {
-        return response()->json(Vision::where('visions.user_id','=', $id)
-            ->get()
+        return response()->json(
+            User::findOrFail($id)
+                ->visions()
+                ->leftJoin('universal_visions as uv', 'uv.id', '=', 'visions.universal_vision_id')
+                ->get()
         );
     }
 
