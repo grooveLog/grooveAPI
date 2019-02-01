@@ -93,7 +93,7 @@ class UserController extends Controller
         return response()->json(
             User::findOrFail($id)
                 ->grooves()
-                ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
+                ->join('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
                 ->get()
         );
     }

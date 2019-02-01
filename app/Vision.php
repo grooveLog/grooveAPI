@@ -18,7 +18,7 @@ class Vision extends Model implements AuthenticatableContract, AuthorizableContr
      * @var array
      */
     protected $fillable = [
-        'personal_description', 'probability', 'passion', 'status', 'status', 'completed_at',
+        'universal_vision_id', 'personal_description', 'probability', 'passion', 'status', 'status', 'completed_at',
     ];
 
     /**
@@ -27,7 +27,7 @@ class Vision extends Model implements AuthenticatableContract, AuthorizableContr
      * @var array
      */
     protected $hidden = [
-        'user_id', 'universal_vision_id', 'vision_timescales_id',
+        'user_id',  'vision_timescales_id',
     ];
 
     public function user()
