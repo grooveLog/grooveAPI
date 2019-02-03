@@ -22,8 +22,9 @@ class VisionController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
+            'user_id' => 'required',
             'universal_vision_id' => 'required|integer',
-            'personal_description' => 'alpha_dash|max:255',
+            'personal_description' => 'max:255',
             'probability' => 'integer',
             'passion' => 'integer',
             'vision_timescales_id' => 'integer',
@@ -39,7 +40,7 @@ class VisionController extends Controller
     {
         $this->validate($request, [
             'universal_vision_id' => 'required|integer',
-            'personal_description' => 'alpha_dash|max:255',
+            'personal_description' => 'max:255',
             'probability' => 'integer',
             'passion' => 'integer',
             'vision_timescales_id' => 'integer',
