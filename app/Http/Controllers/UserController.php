@@ -74,7 +74,7 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->visions()
                 ->leftJoin('universal_visions as uv', 'uv.id', '=', 'visions.universal_vision_id')
-                ->get()
+                ->get(['visions.*', 'uv.*', 'visions.id AS id'])
         );
     }
 
@@ -84,7 +84,7 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->goals()
                 ->leftJoin('universal_goals as ug', 'ug.id', '=', 'goals.universal_goal_id')
-                ->get()
+                ->get(['goals.*', 'ug.*', 'goals.id AS id'])
         );
     }
 
@@ -94,7 +94,7 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->grooves()
                 ->join('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
-                ->get()
+                ->get(['grooves.*', 'ug.*', 'grooves.id AS id'])
         );
     }
 

@@ -18,7 +18,7 @@ class Goal extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'user_id', 'personal_description', 'progress', 'reward', 'goal_date_from', 'goal_date_to', 'status',
+        'user_id', 'universal_goal_id', 'completed_at', 'personal_description', 'progress', 'reward', 'goal_date_from', 'goal_date_to', 'status',
     ];
 
     /**
@@ -27,7 +27,7 @@ class Goal extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'universal_goal_id', 'completed_at',
+        //
     ];
     
     public function user()
