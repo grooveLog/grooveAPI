@@ -20,7 +20,8 @@ class VisionController extends Controller
             Vision::findOrFail($id)
                 ->leftJoin('universal_visions as uv', 'uv.id', '=', 'visions.universal_vision_id')
                 ->where('visions.id', $id)
-                ->get(['visions.*', 'uv.*', 'visions.id AS id'])
+                ->select('visions.*', 'uv.*', 'visions.id AS id')
+                ->first()
         );
     }
 
