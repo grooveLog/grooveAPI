@@ -16,14 +16,20 @@ class GrooveController extends Controller
 
     public function getOneGroove($id)
     {
-        return response()->json(Groove::find($id));
+        return response()->json(
+            Groove::findOrFail($id)
+                ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
+                ->where('grooves.id', $id)
+                ->select('grooves.*', 'ug.*', 'grooves.id AS id')
+                ->first()
+        );
     }
 
     public function create(Request $request)
     {
         $this->validate($request, [
             'universal_groove_id' => 'required|integer',
-            'personal_description' => 'alpha_dash|max:255',
+            'personal_description' => 'max:255',
             'commitment' => 'integer',
             'volume_amount' => 'integer',
             'volume_measurement' => 'integer',
@@ -42,7 +48,7 @@ class GrooveController extends Controller
     {
         $this->validate($request, [
             'universal_groove_id' => 'required|integer',
-            'personal_description' => 'alpha_dash|max:255',
+            'personal_description' => 'max:255',
             'commitment' => 'integer',
             'volume_amount' => 'integer',
             'volume_measurement' => 'integer',
