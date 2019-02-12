@@ -22,7 +22,7 @@ class UniversalVisionController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|alpha_dash|max:255',
+            'name' => 'required|max:255',
             'privacy' => 'required|alpha_dash|max:12',
             'endorsed' => '',
             'status' => 'required',
