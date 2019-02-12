@@ -16,14 +16,20 @@ class GoalController extends Controller
 
     public function getOneGoal($id)
     {
-        return response()->json(Goal::find($id));
+        return response()->json(
+            Goal::findOrFail($id)
+                ->leftJoin('universal_goals as ug', 'ug.id', '=', 'goals.universal_goal_id')
+                ->where('goals.id', $id)
+                ->select('goals.*', 'ug.*', 'goals.id AS id')
+                ->first()
+        );
     }
 
     public function create(Request $request)
     {
         $this->validate($request, [
             'universal_goal_id' => 'required|integer',
-            'personal_description' => 'alpha_dash|max:255',
+            'personal_description' => 'max:255',
             'progress' => 'integer',
             'reward' => 'integer',
             'goal_date_from' => '',
@@ -40,7 +46,7 @@ class GoalController extends Controller
     {
         $this->validate($request, [
             'universal_goal_id' => 'required|integer',
-            'personal_description' => 'alpha_dash|max:255',
+            'personal_description' => 'max:255',
             'progress' => 'integer',
             'reward' => 'integer',
             'goal_date_from' => '',

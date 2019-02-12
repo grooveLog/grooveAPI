@@ -16,7 +16,13 @@ class VisionController extends Controller
 
     public function getOneVision($id)
     {
-        return response()->json(Vision::find($id));
+        return response()->json(
+            Vision::findOrFail($id)
+                ->leftJoin('universal_visions as uv', 'uv.id', '=', 'visions.universal_vision_id')
+                ->where('visions.id', $id)
+                ->select('visions.*', 'uv.*', 'visions.id AS id')
+                ->first()
+        );
     }
 
     public function create(Request $request)
