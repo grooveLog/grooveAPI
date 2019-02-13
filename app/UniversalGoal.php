@@ -18,7 +18,7 @@ class UniversalGoal extends Model implements AuthenticatableContract, Authorizab
      * @var array
      */
     protected $fillable = [
-        'name', 'privacy', 'endorsed', 'status',
+        'user_id', 'name', 'privacy', 'endorsed', 'status',
     ];
 
     /**

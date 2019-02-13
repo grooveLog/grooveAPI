@@ -18,7 +18,7 @@ class UniversalGroove extends Model implements AuthenticatableContract, Authoriz
      * @var array
      */
     protected $fillable = [
-        'name', 'privacy', 'endorsed', 'status',
+        'user_id', 'name', 'privacy', 'endorsed', 'status',
     ];
 
     /**

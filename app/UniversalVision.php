@@ -18,7 +18,7 @@ class UniversalVision extends Model implements AuthenticatableContract, Authoriz
      * @var array
      */
     protected $fillable = [
-        'name', 'comment', 'privacy', 'endorsed', 'status',
+        'user_id', 'name', 'privacy', 'endorsed', 'status',
     ];
 
     /**
