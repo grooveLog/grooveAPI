@@ -17,7 +17,7 @@ class CreateGoalsTable extends Migration
             $table->increments('id');
             $table->string('user_id')->comment('The ID of user who assigning the universal goal');
             $table->integer('universal_goal_id')->unsigned();
-            $table->string('personal_description')->comment('The personal implementation of the universal goal, how I will do it');
+            $table->string('personal_description')->nullable()->comment('The personal implementation of the universal goal, how I will do it');
             $table->integer('progress')->default(0)->comment('goal progress, how close to achievement e.g. 50%%');
             $table->integer('reward')->default(5)->comment('personal reward for completing the for the goal (stars) e.g. 05 10 15 20 25 30 35 40 45 50');
             $table->date('goal_date_from')->nullable()->comment('from date (optional, for between dates)');
