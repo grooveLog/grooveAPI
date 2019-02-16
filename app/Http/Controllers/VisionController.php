@@ -33,7 +33,7 @@ class VisionController extends Controller
             'personal_description' => 'max:255',
             'probability' => 'integer',
             'passion' => 'integer',
-            'vision_timescales_id' => 'integer',
+            'vision_timescales' => 'alpha_dash|max:16',
             'status' => 'required|alpha_dash|max:12'
         ]);
 
@@ -49,7 +49,7 @@ class VisionController extends Controller
             'personal_description' => 'max:255',
             'probability' => 'integer',
             'passion' => 'integer',
-            'vision_timescales_id' => 'integer',
+            'vision_timescales' => 'alpha_dash|max:16',
             'status' => 'required|alpha_dash|max:12',
             'completed_at' => ''
         ]);

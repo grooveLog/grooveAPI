@@ -167,7 +167,7 @@ $factory->define(App\Vision::class, function (Faker\Generator $faker) {
         'completed_at' => $faker->dateTime(),
         'user_id' => $faker->randomElement($userIds),
         'universal_vision_id' => random_int(1, 10),
-        'vision_timescales_id'  => random_int(1, 10),
+        'vision_timescales'  => $faker->randomElement(['THIS_YEAR', 'NEXT_FEW_YEARS', '5_TO_10_YEARS', 'OVER_10_YEARS', 'OLD_AGE', 'BEYOND_LIFETIME']),
     ];
 });
 
