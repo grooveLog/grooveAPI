@@ -21,6 +21,7 @@ class GoalController extends Controller
                 ->leftJoin('universal_goals as ug', 'ug.id', '=', 'goals.universal_goal_id')
                 ->where('goals.id', $id)
                 ->select('goals.*', 'ug.*', 'goals.id AS id')
+                ->with('visions')
                 ->first()
         );
     }
@@ -35,9 +36,11 @@ class GoalController extends Controller
             'goal_date_from' => '',
             'goal_date_to' => '',
             'status' => 'required|alpha_dash|max:12',
+            'visions' => ''
         ]);
 
         $goal = Goal::create($request->all());
+        $goal->visions()->saveMany($request->get('visions'));
 
         return response()->json($goal, 201);
     }
