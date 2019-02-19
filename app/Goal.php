@@ -40,4 +40,10 @@ class Goal extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->belongsTo('App\UniversalGoal');
     }
 
+    // for the goal_vision pivot table
+    public function visions()
+    {
+        return $this->belongsToMany('App\Vision');
+    }
+
 }
