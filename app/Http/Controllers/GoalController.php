@@ -40,7 +40,8 @@ class GoalController extends Controller
         ]);
 
         $goal = Goal::create($request->all());
-        $goal->visions()->saveMany($request->get('visions'));
+
+        $goal->visions()->sync($request->get('visions'));
 
         return response()->json($goal, 201);
     }
