@@ -43,7 +43,7 @@ class Goal extends Model implements AuthenticatableContract, AuthorizableContrac
     // for the goal_vision pivot table
     public function visions()
     {
-        return $this->belongsToMany('App\Vision');
+        return $this->belongsToMany('App\Vision')->select(array('vision_id'));
     }
 
 }

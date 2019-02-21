@@ -84,6 +84,7 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->goals()
                 ->leftJoin('universal_goals as ug', 'ug.id', '=', 'goals.universal_goal_id')
+                ->with('visions')
                 ->get(['goals.*', 'ug.*', 'goals.id AS id'])
         );
     }
