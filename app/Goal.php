@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Query\Builder;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -43,7 +44,20 @@ class Goal extends Model implements AuthenticatableContract, AuthorizableContrac
     // for the goal_vision pivot table
     public function visions()
     {
-        return $this->belongsToMany('App\Vision')->select(array('vision_id'));
+        /** @var \Illuminate\Database\Eloquent\Builder $queryBuilder */
+        $queryBuilder = $this->hasManyThrough(
+            'App\Vision',
+            'App\GoalVision',
+            'goal_id',
+            'id',
+            'vision_id',
+            'vision_id'
+        );
+
+        return $queryBuilder;
+
+        dd($queryBuilder->toSql());
+//            ->select(array('vision_id'));
             //->withPivot('vision_id');
     }
 

@@ -80,12 +80,16 @@ class UserController extends Controller
 
     public function getUserGoals($id)
     {
-        return response()->json(
+        $response =
             User::findOrFail($id)
                 ->goals()
-                ->leftJoin('universal_goals as ug', 'ug.id', '=', 'goals.universal_goal_id')
-                ->with('visions')
-                ->get(['goals.*', 'ug.*', 'goals.id AS id'])
+//                ->leftJoin('universal_goals as ug', 'ug.id', '=', 'goals.universal_goal_id')
+                ->with(['visions']);
+//                ->get();
+//                ->get(['goals.*', 'ug.*', 'goals.id AS id']);
+
+        dd($response->toSql());
+        return response()->json($response
         );
     }
 
