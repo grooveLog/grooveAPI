@@ -134,4 +134,11 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->post('grooves', ['uses' => 'GrooveController@create']);
     $router->delete('grooves/{id}', ['uses' => 'GrooveController@delete']);
     $router->put('grooves/{id}', ['uses' => 'GrooveController@update']);
+
+    //logs
+    $router->get('logs',  ['uses' => 'LogController@getAllLogs']);
+    $router->get('logs/{id}', ['uses' => 'LogController@getOneLog']);
+    $router->post('logs', ['uses' => 'LogController@create']);
+    $router->delete('logs/{id}', ['uses' => 'LogController@delete']);
+    $router->put('logs/{id}', ['uses' => 'LogController@update']);
 });

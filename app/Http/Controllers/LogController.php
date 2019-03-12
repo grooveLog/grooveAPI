@@ -11,7 +11,7 @@ class LogController extends Controller
 
     public function getAllLogs()
     {
-        return response()->json(Log::all());
+        return response()->json(Log::all())->paginate(25);
     }
 
     public function getOneLog($id)
@@ -35,9 +35,9 @@ class LogController extends Controller
             'entry' => 'max:5000'
         ]);
 
-        $questions = Log::create($request->all());
+        $logs = Log::create($request->all());
 
-        return response()->json($questions, 201);
+        return response()->json($logs, 201);
     }
 
     public function update($id, Request $request)
@@ -56,10 +56,10 @@ class LogController extends Controller
             'entry' => 'max:5000'
         ]);
 
-        $questions = Log::findOrFail($id);
-        $questions->update($request->all());
+        $logs = Log::findOrFail($id);
+        $logs->update($request->all());
 
-        return response()->json($questions, 200);
+        return response()->json($logs, 200);
     }
 
     public function delete($id)

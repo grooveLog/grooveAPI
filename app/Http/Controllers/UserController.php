@@ -110,8 +110,13 @@ class UserController extends Controller
     //return logs per user
     public function getUserLogs($id)
     {
-        //need to create either a logs table or individual logs per type
-        //tables and models not defined yet
+        return response()->json(
+            User::findOrFail($id)
+                ->logs()
+                ->get()
+                ->paginate(25)
+        );
+
     }
 
     //return logs of your supporters
