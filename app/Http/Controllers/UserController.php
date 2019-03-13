@@ -94,7 +94,7 @@ class UserController extends Controller
         return response()->json(
             User::findOrFail($id)
                 ->grooves()
-                ->join('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
+                ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
                 ->get(['grooves.*', 'ug.*', 'grooves.id AS id'])
         );
     }
@@ -113,7 +113,9 @@ class UserController extends Controller
         return response()->json(
             User::findOrFail($id)
                 ->logs()
-                ->paginate(25)
+                ->leftJoin('grooves as g', 'g.id', '=', 'logs.groove_id')
+                ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
+                ->paginate(15)
         );
 
     }
