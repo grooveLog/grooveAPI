@@ -107,7 +107,7 @@ class UserController extends Controller
         );
     }
 
-    //return logs per user
+    //return paginated logs per user
     public function getUserLogs($id)
     {
         return response()->json(

@@ -13,7 +13,7 @@ class CreateLogTable extends Migration
      */
     public function up()
     {
-        Schema::create('log', function (Blueprint $table) {
+        Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id')->comment('The ID of user recording to the logs');
             $table->string('type', 12)->comment('Type being logged e.g. GROOVE, MOOD, TASK, JOURNAL');
@@ -37,6 +37,6 @@ class CreateLogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log');
+        Schema::dropIfExists('logs');
     }
 }

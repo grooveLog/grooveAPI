@@ -260,3 +260,23 @@ $factory->define(App\Groove::class, function (Faker\Generator $faker) {
         'status' => $faker->randomElement(['ACTIVE', 'INACTIVE', 'PAUSED']),
     ];
 });
+
+$factory->define(App\Log::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
+    return [
+        'user_id' => $faker->randomElement($userIds),
+        'type' => $faker->randomElement(['GROOVE']),
+        'groove_id' => random_int(1, 10),
+        'performed_at' => $faker->dateTimeBetween('-1 years', 'now'),
+        'success_type' => $faker->randomElement(['DONE', 'FAIL']),
+        'comment' => $faker->realText(255),
+    ];
+});
