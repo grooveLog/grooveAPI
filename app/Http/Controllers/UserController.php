@@ -113,7 +113,6 @@ class UserController extends Controller
         return response()->json(
             User::findOrFail($id)
                 ->logs()
-                ->get()
                 ->paginate(25)
         );
 

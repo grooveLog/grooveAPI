@@ -31,5 +31,10 @@ class Log extends Model implements AuthenticatableContract, AuthorizableContract
         //
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 
 }
