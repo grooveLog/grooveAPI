@@ -18,7 +18,7 @@ class CreateUniversalGroovesTable extends Migration
             $table->string('user_id')->comment('ID of user who submitted the groove');
             $table->string('name')->comment('Name of Groove (e.g. \'Running\' or \'Practice Scales\' or \'Fasting\')');
             $table->string('privacy')->default('PUBLIC')->comment('PUBLIC or PRIVATE (or TEAM in Future)');
-            $table->boolean('endorsed')->default(0)->comment('Whether endorsd by GrooveLog');
+            $table->boolean('endorsed')->default(0)->comment('Whether endorsed by GrooveLog');
             $table->string('status', 12)->default('ACTIVE')->comment('ACTIVE / INACTIVE etc.');
             $table->integer('total_assignments')->default(0)->comment('Counter for the number of times this groove has been used');
             $table->float('average_commitment_rating')->default(0)->comment('Average of all commitment ratings');

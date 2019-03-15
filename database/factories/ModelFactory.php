@@ -280,3 +280,42 @@ $factory->define(App\Log::class, function (Faker\Generator $faker) {
         'comment' => $faker->realText(255),
     ];
 });
+
+$factory->define(App\Task::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
+    return [
+        'user_id' => $faker->randomElement($userIds),
+        'description' => $faker->realText(120),
+        'status' => $faker->randomElement(['PENDING', 'DONE']),
+        'time_remaining' => random_int(1, 90),
+    ];
+});
+
+$factory->define(App\JournalQuestion::class, function (Faker\Generator $faker) {
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
+    return [
+        'user_id' => $faker->randomElement($userIds),
+        'question' => $faker->realText(120),
+        'type' => $faker->randomElement(['PRIVATE', 'MORNING', 'EVENING', 'GENERAL']),
+        'endorsed' => $faker->boolean(),
+        'status' => $faker->randomElement(['PENDING', 'DONE']),
+        'number_of_appearances' => 0,
+        'number_of_answers' => 0
+    ];
+});
