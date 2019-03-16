@@ -271,10 +271,25 @@ $factory->define(App\Log::class, function (Faker\Generator $faker) {
         'kApDcStAQuPLXvFMLL8bmzPAFiD3'
     ];
 
+    $typeOptions = ['GROOVE', 'TASK'];
+    $type = $typeOptions[array_rand($typeOptions)];
+    if ($type === 'GROOVE'){
+        $groove_id = random_int(1, 10);
+    } else {
+        $groove_id = null;
+    }
+    if ($type === 'TASK'){
+        $task_id = random_int(1, 10);
+    } else {
+        $task_id = null;
+    }
+
+
     return [
         'user_id' => $faker->randomElement($userIds),
-        'type' => $faker->randomElement(['GROOVE']),
-        'groove_id' => random_int(1, 10),
+        'type' => $type,
+        'groove_id' => $groove_id,
+        'task_id' => $task_id,
         'performed_at' => $faker->dateTimeBetween('-1 years', 'now'),
         'success_type' => $faker->randomElement(['DONE', 'FAIL']),
         'comment' => $faker->realText(255),

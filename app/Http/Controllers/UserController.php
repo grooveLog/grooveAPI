@@ -115,6 +115,8 @@ class UserController extends Controller
                 ->logs()
                 ->leftJoin('grooves as g', 'g.id', '=', 'logs.groove_id')
                 ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
+                ->leftJoin('tasks as t', 't.id', '=', 'logs.task_id')
+                ->select(['logs.*', 't.*', 'logs.id AS id'])
                 ->paginate(15)
         );
 

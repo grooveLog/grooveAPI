@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
             QuestionnairesTableSeeder::class,
             QuestionsTableSeeder::class,
             QuestionnaireRatingsTableSeeder::class,
-            LogsTableSeeder::class,
             TasksTableSeeder::class,
             JournalQuestionsTableSeeder::class,
+            LogsTableSeeder::class,
         ]);
     }
 }
