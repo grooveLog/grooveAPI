@@ -141,4 +141,18 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->post('logs', ['uses' => 'LogController@create']);
     $router->delete('logs/{id}', ['uses' => 'LogController@delete']);
     $router->put('logs/{id}', ['uses' => 'LogController@update']);
+
+    //tasks
+    $router->get('tasks',  ['uses' => 'TaskController@getAllTasks']);
+    $router->get('tasks/{id}', ['uses' => 'TaskController@getOneTask']);
+    $router->post('tasks', ['uses' => 'TaskController@create']);
+    $router->delete('tasks/{id}', ['uses' => 'TaskController@delete']);
+    $router->put('tasks/{id}', ['uses' => 'TaskController@update']);
+
+    //journal_questions
+    $router->get('journal_questions',  ['uses' => 'JournalQuestionController@getAllJournalQuestions']);
+    $router->get('journal_questions/{id}', ['uses' => 'JournalQuestionController@getOneJournalQuestion']);
+    $router->post('journal_questions', ['uses' => 'JournalQuestionController@create']);
+    $router->delete('journal_questions/{id}', ['uses' => 'JournalQuestionController@delete']);
+    $router->put('journal_questions/{id}', ['uses' => 'JournalQuestionController@update']);
 });
