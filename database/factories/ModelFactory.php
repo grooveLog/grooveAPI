@@ -271,25 +271,31 @@ $factory->define(App\Log::class, function (Faker\Generator $faker) {
         'kApDcStAQuPLXvFMLL8bmzPAFiD3'
     ];
 
-    $typeOptions = ['GROOVE', 'TASK'];
+    $typeOptions = ['GROOVE', 'TASK', 'JOURNAL'];
     $type = $typeOptions[array_rand($typeOptions)];
     if ($type === 'GROOVE'){
-        $groove_id = random_int(1, 10);
+        $grooveId = random_int(1, 10);
     } else {
-        $groove_id = null;
+        $grooveId = null;
     }
     if ($type === 'TASK'){
-        $task_id = random_int(1, 10);
+        $taskId = random_int(1, 10);
     } else {
-        $task_id = null;
+        $taskId = null;
+    }
+    if ($type === 'JOURNAL'){
+        $journalQuestionId = random_int(1, 10);
+    } else {
+        $journalQuestionId = null;
     }
 
 
     return [
         'user_id' => $faker->randomElement($userIds),
         'type' => $type,
-        'groove_id' => $groove_id,
-        'task_id' => $task_id,
+        'groove_id' => $grooveId,
+        'task_id' => $taskId,
+        'journal_question_id' => $journalQuestionId,
         'performed_at' => $faker->dateTimeBetween('-1 years', 'now'),
         'success_type' => $faker->randomElement(['DONE', 'FAIL']),
         'comment' => $faker->realText(255),

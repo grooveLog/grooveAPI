@@ -113,10 +113,31 @@ class UserController extends Controller
         return response()->json(
             User::findOrFail($id)
                 ->logs()
-                ->leftJoin('grooves as g', 'g.id', '=', 'logs.groove_id')
+                ->leftJoin('grooves as g', function ($join) {
+                    $join->on('logs.groove_id', '=', 'g.id')
+                        ->whereNotNull('logs.groove_id');
+                })
                 ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
-                ->leftJoin('tasks as t', 't.id', '=', 'logs.task_id')
-                ->select(['logs.*', 't.*', 'logs.id AS id'])
+                ->leftJoin('tasks as t', function ($join) {
+                    $join->on('logs.task_id', '=', 't.id')
+                        ->whereNotNull('logs.task_id');
+                })
+                ->leftJoin('journal_questions as jq', function ($join) {
+                    $join->on('logs.journal_question_id', '=', 'jq.id')
+                        ->whereNotNull('logs.journal_question_id');
+                })
+                ->select([
+                    'logs.*',
+                    't.*',
+                    'jq.*',
+                    'g.*',
+                    'ug.*',
+                    'logs.id AS id',
+                    'logs.type AS type',
+                    'jq.type AS journal_question_type',
+                    'jq.status AS journal_question_status',
+                    'g.status AS groove_status',
+                ])
                 ->paginate(15)
         );
 
