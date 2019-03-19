@@ -134,8 +134,13 @@ class UserController extends Controller
                     'ug.*',
                     'logs.id AS id',
                     'logs.type AS type',
+                    't.description AS task_description',
+                    't.status AS task_status',
+                    't.time_remaining AS task_time_remaining',
                     'jq.type AS journal_question_type',
                     'jq.status AS journal_question_status',
+                    'jq.question AS journal_question',
+                    'jq.endorsed AS journal_question_endorsed',
                     'g.status AS groove_status',
                 ])
                 ->paginate(15)
