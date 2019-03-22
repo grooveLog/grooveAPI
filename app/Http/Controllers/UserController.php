@@ -117,7 +117,11 @@ class UserController extends Controller
                     $join->on('logs.groove_id', '=', 'g.id')
                         ->whereNotNull('logs.groove_id');
                 })
-                ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
+                //->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
+                ->leftJoin('universal_grooves as ug', function ($join) {
+                    $join->on('g.universal_groove_id', '=', 'ug.id')
+                        ->whereNotNull('g.universal_groove_id');
+                })
                 ->leftJoin('tasks as t', function ($join) {
                     $join->on('logs.task_id', '=', 't.id')
                         ->whereNotNull('logs.task_id');
@@ -128,10 +132,6 @@ class UserController extends Controller
                 })
                 ->select([
                     'logs.*',
-                    't.*',
-                    'jq.*',
-                    'g.*',
-                    'ug.*',
                     'logs.id AS id',
                     'logs.type AS type',
                     't.description AS task_description',
@@ -141,7 +141,19 @@ class UserController extends Controller
                     'jq.status AS journal_question_status',
                     'jq.question AS journal_question',
                     'jq.endorsed AS journal_question_endorsed',
+                    'g.personal_description AS groove_personal_description',
+                    'g.commitment AS groove.commitment',
+                    'g.volume_amount AS groove.volume_amount',
+                    'g.volume_measurement AS groove.volume_measurement',
+                    'g.frequency_prefix AS groove.frequency_prefix',
+                    'g.frequency_number AS groove.frequency_number',
+                    'g.frequency_period AS groove.frequency_period',
                     'g.status AS groove_status',
+                    'ug.user_id AS universal_groove_user_id',
+                    'ug.name AS universal_groove_name',
+                    'ug.privacy AS universal_groove_privacy',
+                    'ug.endorsed AS universal_groove_endorsed',
+                    'ug.status AS universal_groove_status',
                 ])
                 ->paginate(15)
         );
