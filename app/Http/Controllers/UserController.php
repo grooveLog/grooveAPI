@@ -117,7 +117,6 @@ class UserController extends Controller
                     $join->on('logs.groove_id', '=', 'g.id')
                         ->whereNotNull('logs.groove_id');
                 })
-                //->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
                 ->leftJoin('universal_grooves as ug', function ($join) {
                     $join->on('g.universal_groove_id', '=', 'ug.id')
                         ->whereNotNull('g.universal_groove_id');
@@ -160,10 +159,19 @@ class UserController extends Controller
 
     }
 
-    //return Groove logs per user - /v1/users/eI1AV0blghcWzngdT0DprCz2W1V2/logs/groove?dateFrom=123&dateTo=123
+    //return Groove logs per user - /v1/users/eI1AV0blghcWzngdT0DprCz2W1V2/logs/groove?start=20190431&end=20190502
     public function getUserGrooveLogs($id, Request $request)
     {
-        $date = $request->query('date');
+        $start = $request->query('start');
+        $end = $request->query('end');
+
+        //id empty then set start and end to today
+        if (empty($start) || empty($end)){
+            $time = \Carbon\Carbon::now()->toDateTimeString();
+            $start = $time;
+            $end = $time;
+        }
+
         return response()->json(
             User::findOrFail($id)
                 ->logs()
@@ -171,11 +179,11 @@ class UserController extends Controller
                     $join->on('logs.groove_id', '=', 'g.id')
                         ->whereNotNull('logs.groove_id');
                 })
-                //->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
                 ->leftJoin('universal_grooves as ug', function ($join) {
                     $join->on('g.universal_groove_id', '=', 'ug.id')
                         ->whereNotNull('g.universal_groove_id');
                 })
+                ->whereBetween('performed_at', [$start, $end])
                 ->select([
                     'logs.*',
                     'logs.id AS id',
