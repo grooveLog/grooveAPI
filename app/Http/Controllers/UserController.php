@@ -159,12 +159,10 @@ class UserController extends Controller
 
     }
 
-    //return Groove logs per user - /v1/users/eI1AV0blghcWzngdT0DprCz2W1V2/logs/groove?start=20190431&end=20190502
     public function getUserGrooveLogs($id, Request $request)
     {
         $start = $request->query('start');
         $end = $request->query('end');
-
         //id empty then set start and end to today
         if (empty($start) || empty($end)){
             $time = \Carbon\Carbon::now()->toDateTimeString();
@@ -183,6 +181,7 @@ class UserController extends Controller
                     $join->on('g.universal_groove_id', '=', 'ug.id')
                         ->whereNotNull('g.universal_groove_id');
                 })
+                ->where('type', 'GROOVE')
                 ->whereBetween('performed_at', [$start, $end])
                 ->select([
                     'logs.*',
