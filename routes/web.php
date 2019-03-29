@@ -28,6 +28,7 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->get('users/{id}/grooves',  ['uses' => 'UserController@getUserGrooves']);
     $router->get('users/{id}/results',  ['uses' => 'UserController@getUserAnswers']);
     $router->get('users/{id}/logs',  ['uses' => 'UserController@getUserLogs']);
+    $router->get('users/{id}/logs/groove',  ['uses' => 'UserController@getUserGrooveLogs']);
     $router->get('users/{id}/supporter_logs',  ['uses' => 'UserController@getSupporterLogsPerUser']);
     $router->get('users/{id}/supporting_logs',  ['uses' => 'UserController@getSupportingLogsPerUser']);
     $router->get('users/{id}/mentor_logs',  ['uses' => 'UserController@getMentorLogsPerUser']);

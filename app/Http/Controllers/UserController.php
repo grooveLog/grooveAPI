@@ -160,6 +160,45 @@ class UserController extends Controller
 
     }
 
+    //return Groove logs per user - /v1/users/eI1AV0blghcWzngdT0DprCz2W1V2/logs/groove?dateFrom=123&dateTo=123
+    public function getUserGrooveLogs($id, Request $request)
+    {
+        $date = $request->query('date');
+        return response()->json(
+            User::findOrFail($id)
+                ->logs()
+                ->leftJoin('grooves as g', function ($join) {
+                    $join->on('logs.groove_id', '=', 'g.id')
+                        ->whereNotNull('logs.groove_id');
+                })
+                //->leftJoin('universal_grooves as ug', 'ug.id', '=', 'g.universal_groove_id')
+                ->leftJoin('universal_grooves as ug', function ($join) {
+                    $join->on('g.universal_groove_id', '=', 'ug.id')
+                        ->whereNotNull('g.universal_groove_id');
+                })
+                ->select([
+                    'logs.*',
+                    'logs.id AS id',
+                    'logs.type AS type',
+                    'g.personal_description AS groove_personal_description',
+                    'g.commitment AS groove_commitment',
+                    'g.volume_amount AS groove_volume_amount',
+                    'g.volume_measurement AS groove_volume_measurement',
+                    'g.frequency_prefix AS groove_frequency_prefix',
+                    'g.frequency_number AS groove_frequency_number',
+                    'g.frequency_period AS groove_frequency_period',
+                    'g.status AS groove_status',
+                    'ug.user_id AS universal_groove_user_id',
+                    'ug.name AS universal_groove_name',
+                    'ug.privacy AS universal_groove_privacy',
+                    'ug.endorsed AS universal_groove_endorsed',
+                    'ug.status AS universal_groove_status',
+                ])
+                ->get()
+        );
+
+    }
+
     //return logs of your supporters
     public function getSupporterLogsPerUser($id)
     {
