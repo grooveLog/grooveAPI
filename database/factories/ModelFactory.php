@@ -256,7 +256,7 @@ $factory->define(App\Groove::class, function (Faker\Generator $faker) {
         'volume_measurement' => $faker->randomElement(['REPS', 'SESSIONS', 'MINS']),
         'frequency_prefix' => $faker->randomElement(['AT_LEAST', 'UP_TO', '', '', '']),
         'frequency_number' => random_int(1, 5),
-        'frequency_period' => $faker->randomElement(['PER_WEEK', 'PER_MONTH', 'DAILY', 'PER_DAY']),
+        'frequency_period' => $faker->randomElement(['PER_WEEK', 'PER_MONTH', 'PER_DAY', 'PER_YEAR', 'PER_FORTNIGHT']),
         'status' => $faker->randomElement(['ACTIVE', 'INACTIVE', 'PAUSED']),
     ];
 });
