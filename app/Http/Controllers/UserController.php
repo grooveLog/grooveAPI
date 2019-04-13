@@ -129,6 +129,7 @@ class UserController extends Controller
                     $join->on('logs.journal_question_id', '=', 'jq.id')
                         ->whereNotNull('logs.journal_question_id');
                 })
+                ->orderBy('performed_at', 'desc')
                 ->select([
                     'logs.*',
                     'logs.id AS id',
@@ -183,6 +184,7 @@ class UserController extends Controller
                 })
                 ->where('type', 'GROOVE')
                 ->whereBetween('performed_at', [$start, $end])
+                ->orderBy('performed_at', 'desc')
                 ->select([
                     'logs.*',
                     'logs.id AS id',
