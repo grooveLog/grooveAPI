@@ -29,6 +29,9 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->get('users/{id}/results',  ['uses' => 'UserController@getUserAnswers']);
     $router->get('users/{id}/logs',  ['uses' => 'UserController@getUserLogs']);
     $router->get('users/{id}/logs/groove',  ['uses' => 'UserController@getUserGrooveLogs']);
+    $router->get('users/{id}/logs/mood',  ['uses' => 'UserController@getUserMoodLogs']);
+    $router->get('users/{id}/logs/task',  ['uses' => 'UserController@getUserTaskLogs']);
+    $router->get('users/{id}/logs/journal',  ['uses' => 'UserController@getUserJournalLogs']);
     $router->get('users/{id}/supporter_logs',  ['uses' => 'UserController@getSupporterLogsPerUser']);
     $router->get('users/{id}/supporting_logs',  ['uses' => 'UserController@getSupportingLogsPerUser']);
     $router->get('users/{id}/mentor_logs',  ['uses' => 'UserController@getMentorLogsPerUser']);
@@ -142,6 +145,7 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->post('logs', ['uses' => 'LogController@create']);
     $router->delete('logs/{id}', ['uses' => 'LogController@delete']);
     $router->put('logs/{id}', ['uses' => 'LogController@update']);
+    $router->patch('logs/{id}', ['uses' => 'LogController@patch']);
 
     //tasks
     $router->get('tasks',  ['uses' => 'TaskController@getAllTasks']);

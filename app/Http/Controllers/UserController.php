@@ -170,7 +170,6 @@ class UserController extends Controller
             $start = $time;
             $end = $time;
         }
-
         return response()->json(
             User::findOrFail($id)
                 ->logs()
@@ -205,7 +204,31 @@ class UserController extends Controller
                 ])
                 ->get()
         );
+    }
 
+    public function getUserMoodLogs($id, Request $request)
+    {
+        $start = $request->query('start');
+        $end = $request->query('end');
+        //id empty then set start and end to today
+        if (empty($start) || empty($end)){
+            $time = \Carbon\Carbon::now()->toDateTimeString();
+            $start = $time;
+            $end = $time;
+        }
+        return response()->json(
+            User::findOrFail($id)
+                ->logs()
+                ->where('type', 'MOOD')
+                ->whereBetween('performed_at', [$start, $end])
+                ->orderBy('performed_at', 'desc')
+                ->select([
+                    'logs.*',
+                    'logs.id AS id',
+                    'logs.type AS type'
+                ])
+                ->get()
+        );
     }
 
     //return logs of your supporters
