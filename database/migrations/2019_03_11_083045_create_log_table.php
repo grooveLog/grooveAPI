@@ -19,7 +19,7 @@ class CreateLogTable extends Migration
             $table->string('type', 12)->comment('Type being logged e.g. GROOVE, MOOD, TASK, JOURNAL');
             $table->integer('groove_id')->nullable()->comment('Key to the Groove table');
             $table->integer('task_id')->nullable()->comment('Key to the Task table');
-            $table->integer('answer_id')->nullable()->comment('For Mood Introspection -ID from the answers table');
+            $table->json('introspection')->nullable()->comment('For Mood Introspection');
             $table->integer('journal_question_id')->nullable()->comment('Key to journal_questions table');
             $table->date('performed_at')->nullable()->comment('date the item is performed (e.g. Grooves/Tasks only)');
             $table->string('success_type', 12)->nullable()->comment('e.g. DONE / FAIL');

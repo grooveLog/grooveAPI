@@ -18,8 +18,8 @@ class Log extends Model implements AuthenticatableContract, AuthorizableContract
      * @var array
      */
     protected $fillable = [
-        'user_id', 'type', 'groove_id', 'task_id', 'answer_id', 'journal_question_id', 'performed_at', 'success_type',
-        'comment', 'mood_score', 'entry'
+        'user_id', 'type', 'groove_id', 'task_id', 'journal_question_id', 'performed_at', 'success_type',
+        'comment', 'mood_score', 'introspection', 'entry'
     ];
 
     /**
