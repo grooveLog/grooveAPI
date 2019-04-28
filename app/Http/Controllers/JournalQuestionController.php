@@ -26,6 +26,9 @@ class JournalQuestionController extends Controller
             'question' => 'required',
             'type' => 'required|alpha_dash|max:12',
             'endorsed' => '',
+            'privacy' => '',
+            'explanation' => '',
+            'links' => '',
             'status'  => 'required|alpha_dash|max:12',
         ]);
 
@@ -41,6 +44,9 @@ class JournalQuestionController extends Controller
             'question' => 'required',
             'type' => 'required|alpha_dash|max:12',
             'endorsed' => '',
+            'privacy' => '',
+            'explanation' => '',
+            'links' => '',
             'status'  => 'required|alpha_dash|max:12',
         ]);
 

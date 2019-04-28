@@ -22,6 +22,9 @@ class JournalQuestion extends Model implements AuthenticatableContract, Authoriz
         'question',
         'type',
         'endorsed',
+        'privacy',
+        'explanation',
+        'links',
         'status',
         'number_of_appearances',
         'number_of_answers'
@@ -32,7 +35,7 @@ class JournalQuestion extends Model implements AuthenticatableContract, Authoriz
      *
      * @var array
      */
-    protected $hidden = [
+    protected $hidden =  [
         //
     ];
 
