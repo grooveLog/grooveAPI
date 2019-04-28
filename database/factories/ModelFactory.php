@@ -333,9 +333,10 @@ $factory->define(App\JournalQuestion::class, function (Faker\Generator $faker) {
     return [
         'user_id' => $faker->randomElement($userIds),
         'question' => $faker->realText(120),
-        'type' => $faker->randomElement(['PRIVATE', 'MORNING', 'EVENING', 'GENERAL']),
+        'type' => $faker->randomElement([ 'MORNING', 'EVENING', '']),
+        'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
         'endorsed' => $faker->boolean(),
-        'status' => $faker->randomElement(['PENDING', 'DONE']),
+        'status' => $faker->randomElement(['ACTIVE', 'INACTIVE']),
         'number_of_appearances' => 0,
         'number_of_answers' => 0
     ];

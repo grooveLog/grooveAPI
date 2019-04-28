@@ -56,5 +56,13 @@ class JournalQuestionController extends Controller
         return response('Successfully Deleted JournalQuestion', 200);
     }
 
+    public function getRandomJournalQuestion ()
+    {
+        $random = JournalQuestion::inRandomOrder()
+            ->where('status', 'ACTIVE')
+            ->where('endorsed', true)
+            ->first();
+        return response()->json($random, 200);
+    }
 
 }

@@ -156,6 +156,7 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
 
     //journal_questions
     $router->get('journal_questions',  ['uses' => 'JournalQuestionController@getAllJournalQuestions']);
+    $router->get('journal_questions/random',  ['uses' => 'JournalQuestionController@getRandomJournalQuestion']);
     $router->get('journal_questions/{id}', ['uses' => 'JournalQuestionController@getOneJournalQuestion']);
     $router->post('journal_questions', ['uses' => 'JournalQuestionController@create']);
     $router->delete('journal_questions/{id}', ['uses' => 'JournalQuestionController@delete']);
