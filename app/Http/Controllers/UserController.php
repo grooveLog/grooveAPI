@@ -245,7 +245,7 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->logs()
                 ->where('type', 'JOURNAL')
-                ->whereBetween('created_at', [$start, $end])
+                ->whereBetween('performed_at', [$start, $end])
                 ->orderBy('created_at', 'desc')
                 ->select([
                     'logs.*',
