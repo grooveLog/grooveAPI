@@ -244,7 +244,11 @@ class UserController extends Controller
         return response()->json(
             User::findOrFail($id)
                 ->logs()
-                ->where('type', 'JOURNAL')
+                ->leftJoin('journal_questions as jq', function ($join) {
+                    $join->on('logs.journal_question_id', '=', 'jq.id')
+                        ->whereNotNull('logs.journal_question_id');
+                })
+                ->where('logs.type', 'JOURNAL')
                 ->whereBetween('performed_at', [$start, $end])
                 ->orderBy('created_at', 'desc')
                 ->select([
