@@ -231,6 +231,31 @@ class UserController extends Controller
         );
     }
 
+    public function getUserJournalLogs($id, Request $request)
+    {
+        $start = $request->query('start');
+        $end = $request->query('end');
+        //id empty then set start and end to today
+        if (empty($start) || empty($end)){
+            $time = \Carbon\Carbon::now()->toDateTimeString();
+            $start = $time;
+            $end = $time;
+        }
+        return response()->json(
+            User::findOrFail($id)
+                ->logs()
+                ->where('type', 'JOURNAL')
+                ->whereBetween('created_at', [$start, $end])
+                ->orderBy('created_at', 'desc')
+                ->select([
+                    'logs.*',
+                    'logs.id AS id',
+                    'logs.type AS type'
+                ])
+                ->get()
+        );
+    }
+
     //return logs of your supporters
     public function getSupporterLogsPerUser($id)
     {
