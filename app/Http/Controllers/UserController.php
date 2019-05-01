@@ -254,7 +254,13 @@ class UserController extends Controller
                 ->select([
                     'logs.*',
                     'logs.id AS id',
-                    'logs.type AS type'
+                    'logs.type AS type',
+                    'jq.question AS journal_question',
+                    'jq.type AS journal_question_type',
+                    'jq.endorsed AS journal_question_endorsed',
+                    'jq.status AS journal_question_status',
+                    'jq.number_of_appearances AS journal_question_umber_of_appearances',
+                    'jq.number_of_answers AS journal_question_number_of_answers'
                 ])
                 ->get()
         );
