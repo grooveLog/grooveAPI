@@ -342,3 +342,11 @@ $factory->define(App\JournalQuestion::class, function (Faker\Generator $faker) {
         'number_of_answers' => 0
     ];
 });
+
+$factory->define(App\JournalFavourites::class, function (Faker\Generator $faker) {
+
+    return [
+        'user_id' => 'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'list' => json_encode([1,3,5,7])
+    ];
+});

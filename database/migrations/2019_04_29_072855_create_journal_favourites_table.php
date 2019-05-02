@@ -16,7 +16,7 @@ class CreateJournalFavouritesTable extends Migration
         Schema::create('journal_favourites', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id')->unique()->comment('The ID of user who is favouriting journal questions');
-            $table->json('list')->nullable()->comment('Json list of favourite ids e.g. journal_question_id date_added');
+            $table->json('list')->nullable()->comment('Json list of favourite ids e.g. journal_question_id');
             $table->timestamps();
         });
     }
