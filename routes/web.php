@@ -32,6 +32,7 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->get('users/{id}/logs/mood',  ['uses' => 'UserController@getUserMoodLogs']);
     $router->get('users/{id}/logs/task',  ['uses' => 'UserController@getUserTaskLogs']);
     $router->get('users/{id}/logs/journal',  ['uses' => 'UserController@getUserJournalLogs']);
+    $router->get('users/{id}/logs/journal_question_favourites',  ['uses' => 'UserController@getUserJournalQuestionFavourites']);
     $router->get('users/{id}/supporter_logs',  ['uses' => 'UserController@getSupporterLogsPerUser']);
     $router->get('users/{id}/supporting_logs',  ['uses' => 'UserController@getSupportingLogsPerUser']);
     $router->get('users/{id}/mentor_logs',  ['uses' => 'UserController@getMentorLogsPerUser']);
