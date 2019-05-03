@@ -266,36 +266,15 @@ class UserController extends Controller
         );
     }
 
-    public function getUserJournalQuestionFavourites($id, Request $request)
+    public function getUserJournalQuestionFavourites($id)
     {
-        $start = $request->query('start');
-        $end = $request->query('end');
-        //id empty then set start and end to today
-        if (empty($start) || empty($end)){
-            $time = \Carbon\Carbon::now()->toDateTimeString();
-            $start = $time;
-            $end = $time;
-        }
         return response()->json(
             User::findOrFail($id)
-                ->logs()
-                ->leftJoin('journal_questions as jq', function ($join) {
-                    $join->on('logs.journal_question_id', '=', 'jq.id')
-                        ->whereNotNull('logs.journal_question_id');
-                })
-                ->where('logs.type', 'JOURNAL')
-                ->whereBetween('performed_at', [$start, $end])
-                ->orderBy('created_at', 'desc')
+                ->where('users.id','=', $id)
+                ->leftJoin('journal_favourites as jqf', 'users.id', '=', 'jqf.user_id')
                 ->select([
-                    'logs.*',
-                    'logs.id AS id',
-                    'logs.type AS type',
-                    'jq.question AS journal_question',
-                    'jq.type AS journal_question_type',
-                    'jq.endorsed AS journal_question_endorsed',
-                    'jq.status AS journal_question_status',
-                    'jq.number_of_appearances AS journal_question_umber_of_appearances',
-                    'jq.number_of_answers AS journal_question_number_of_answers'
+                    'users.id AS user_id',
+                    'jqf.list AS list'
                 ])
                 ->get()
         );
