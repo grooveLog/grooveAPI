@@ -7,6 +7,7 @@ use App\Vision;
 use App\Goal;
 use App\Groove;
 use App\Answer;
+use App\JournalQuestion;
 use Illuminate\Http\Request;
 
 
@@ -268,14 +269,21 @@ class UserController extends Controller
 
     public function getUserJournalQuestionFavourites($id)
     {
-        return response()->json(
-            User::findOrFail($id)
+        $questions = [];
+        $favourites = User::findOrFail($id)
                 ->where('users.id','=', $id)
                 ->leftJoin('journal_favourites as jqf', 'users.id', '=', 'jqf.user_id')
                 ->select([
-                    'users.id AS user_id',
                     'jqf.list AS list'
                 ])
+                ->get(1);
+
+        if (sizeof($favourites) === 1) {
+            $questions = json_decode($favourites[0]['list'], true);
+        };
+
+        return response()->json(
+            JournalQuestion::whereIn('id', $questions)
                 ->get()
         );
     }
