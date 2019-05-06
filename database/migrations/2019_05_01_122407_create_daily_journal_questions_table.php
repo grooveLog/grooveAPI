@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionOfTheDayTable extends Migration
+class CreateDailyJournalQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateQuestionOfTheDayTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_of_the_day', function (Blueprint $table) {
+        Schema::create('daily_journal_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->date('day')->unique()->comment('yyyy-mm-dd');
             $table->integer('question_id');
@@ -29,6 +29,6 @@ class CreateQuestionOfTheDayTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_of_the_day');
+        Schema::dropIfExists('daily_journal_questions');
     }
 }

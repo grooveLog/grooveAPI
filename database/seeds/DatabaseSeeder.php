@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             JournalQuestionsTableSeeder::class,
             JournalFavouritesTableSeeder::class,
             LogsTableSeeder::class,
+            DailyJournalQuestionsTableSeeder::class,
         ]);
+
     }
 }

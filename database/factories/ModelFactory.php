@@ -350,3 +350,20 @@ $factory->define(App\JournalFavourites::class, function (Faker\Generator $faker)
         'list' => json_encode([1,3,5,7])
     ];
 });
+
+$factory->define(App\DailyJournalQuestions::class, function (Faker\Generator $faker) {
+
+    $userIds = [
+        'eI1AV0blghcWzngdT0DprCz2W1V2',
+        'aUoNpmZO5jhM35p32M2R5BGiLjg1',
+        'U8j6MBTXHwOtoANQ0SajMzx4AkH2',
+        'ANDEaGQp6KVVrRaJeM9cI2KsCVV2',
+        '44RLIDUo2Sg39CGzobCHf2rY3gX2',
+        'kApDcStAQuPLXvFMLL8bmzPAFiD3'
+    ];
+
+    return [
+        'set_by' => $faker->randomElement($userIds),
+        'question_id' => random_int(1, 10)
+    ];
+});

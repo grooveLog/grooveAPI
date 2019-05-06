@@ -162,4 +162,12 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->post('journal_questions', ['uses' => 'JournalQuestionController@create']);
     $router->delete('journal_questions/{id}', ['uses' => 'JournalQuestionController@delete']);
     $router->put('journal_questions/{id}', ['uses' => 'JournalQuestionController@update']);
+
+    //daily_journal_questions
+    $router->get('daily_journal_questions',  ['uses' => 'DailyJournalQuestionsController@getAllDailyJournalQuestions']);
+    $router->get('daily_journal_questions/today', ['uses' => 'DailyJournalQuestionsController@getTodaysQuestion']);
+    $router->get('daily_journal_questions/{id}', ['uses' => 'DailyJournalQuestionsController@getOneDailyJournalQuestion']);
+    $router->post('daily_journal_questions', ['uses' => 'DailyJournalQuestionsController@create']);
+    $router->delete('daily_journal_questions/{id}', ['uses' => 'DailyJournalQuestionsController@delete']);
+    $router->put('daily_journal_questions/{id}', ['uses' => 'DailyJournalQuestionsController@update']);
 });
