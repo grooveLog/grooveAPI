@@ -56,16 +56,10 @@ class DailyJournalQuestionsController extends Controller
     public function getTodaysQuestion()
     {
         $today = date("Y-m-d");
-        $question = response()->json(DailyJournalQuestions::where('day', $today)
-        ->get()
-        );
+        $result = DailyJournalQuestions::where('day', $today)
+            ->get();
 
-        /*
-        var_dump($question);
-        exit();
-        */
-
-        if (sizeof($question) === 0) {
+        if ($result->isEmpty()) {
             // Set a random Question of The Day
             $id = self::DEFAULT_QUESTIONS[array_rand(self::DEFAULT_QUESTIONS)];
             $setQuestion = [
@@ -76,9 +70,11 @@ class DailyJournalQuestionsController extends Controller
 
             //$setQuestion = json_encode($setQuestion);
             $settingQuestion = DailyJournalQuestions::create($setQuestion);
-            $question = response()->json($settingQuestion, 201);
+            return response()->json($settingQuestion, 201);
         }
-        return $question;
+        else {
+            return response()->json($result);
+        }
     }
 
 }
