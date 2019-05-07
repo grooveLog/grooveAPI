@@ -67,8 +67,7 @@ class DailyJournalQuestionsController extends Controller
                 'question_id' => $id,
                 'day' => $today
             ];
-
-            //$setQuestion = json_encode($setQuestion);
+            
             $settingQuestion = DailyJournalQuestions::create($setQuestion);
             return response()->json($settingQuestion, 201);
         }
