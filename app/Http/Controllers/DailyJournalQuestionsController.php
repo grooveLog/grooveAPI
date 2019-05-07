@@ -57,6 +57,15 @@ class DailyJournalQuestionsController extends Controller
     {
         $today = date("Y-m-d");
         $result = DailyJournalQuestions::where('day', $today)
+            ->leftJoin('journal_questions as jq', function ($join) {
+                $join->on('question_id', '=', 'jq.id');
+            })
+            ->select([
+                'jq.*',
+                'daily_journal_questions.*',
+                'daily_journal_questions.id AS daily_journal_questions_id',
+                'jq.id AS id'
+            ])
             ->first();
 
         if (!$result) {
@@ -67,13 +76,25 @@ class DailyJournalQuestionsController extends Controller
                 'question_id' => $id,
                 'day' => $today
             ];
-            
-            $settingQuestion = DailyJournalQuestions::create($setQuestion);
-            return response()->json($settingQuestion, 201);
+
+            DailyJournalQuestions::create($setQuestion);
+
+            $result = DailyJournalQuestions::where('day', $today)
+                ->leftJoin('journal_questions as jq', function ($join) {
+                    $join->on('question_id', '=', 'jq.id');
+                })
+                ->select([
+                    'jq.*',
+                    'daily_journal_questions.*',
+                    'daily_journal_questions.id AS daily_journal_questions_id',
+                    'jq.id AS id'
+                ])
+                ->first();
+
         }
-        else {
-            return response()->json($result);
-        }
+
+        return response()->json($result);
+
     }
 
 }
