@@ -57,9 +57,9 @@ class DailyJournalQuestionsController extends Controller
     {
         $today = date("Y-m-d");
         $result = DailyJournalQuestions::where('day', $today)
-            ->get();
+            ->first();
 
-        if ($result->isEmpty()) {
+        if (!$result) {
             // Set a random Question of The Day
             $id = self::DEFAULT_QUESTIONS[array_rand(self::DEFAULT_QUESTIONS)];
             $setQuestion = [
