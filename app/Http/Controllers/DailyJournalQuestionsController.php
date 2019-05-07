@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class DailyJournalQuestionsController extends Controller
 {
+    const DEFAULT_QUESTIONS = [1, 3, 7]; // list of default ids for questions of the day in-case none have been set
 
     public function getAllJournalQuestionsOfTheDay()
     {
@@ -55,10 +56,29 @@ class DailyJournalQuestionsController extends Controller
     public function getTodaysQuestion()
     {
         $today = date("Y-m-d");
-        return response()->json(DailyJournalQuestions::where('day', $today)
+        $question = response()->json(DailyJournalQuestions::where('day', $today)
         ->get()
         );
-    }
 
+        /*
+        var_dump($question);
+        exit();
+        */
+
+        if (sizeof($question) === 0) {
+            // Set a random Question of The Day
+            $id = self::DEFAULT_QUESTIONS[array_rand(self::DEFAULT_QUESTIONS)];
+            $setQuestion = [
+                'set_by' => 'system',
+                'question_id' => $id,
+                'day' => $today
+            ];
+
+            //$setQuestion = json_encode($setQuestion);
+            $settingQuestion = DailyJournalQuestions::create($setQuestion);
+            $question = response()->json($settingQuestion, 201);
+        }
+        return $question;
+    }
 
 }
