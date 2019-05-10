@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
             QuestionnaireRatingsTableSeeder::class,
             TasksTableSeeder::class,
             JournalQuestionsTableSeeder::class,
-            JournalFavouritesTableSeeder::class,
             LogsTableSeeder::class,
             DailyJournalQuestionsTableSeeder::class,
         ]);

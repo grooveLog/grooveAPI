@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class JournalFavourites extends Model implements AuthenticatableContract, AuthorizableContract
+class Favourites extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
@@ -18,7 +18,7 @@ class JournalFavourites extends Model implements AuthenticatableContract, Author
      * @var array
      */
     protected $fillable = [
-        'user_id', 'list'
+        'user_id', 'type', 'entity_id'
     ];
 
     /**

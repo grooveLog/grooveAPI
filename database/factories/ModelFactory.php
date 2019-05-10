@@ -343,6 +343,7 @@ $factory->define(App\JournalQuestion::class, function (Faker\Generator $faker) {
     ];
 });
 
+/*
 $factory->define(App\JournalFavourites::class, function (Faker\Generator $faker) {
 
     return [
@@ -350,6 +351,7 @@ $factory->define(App\JournalFavourites::class, function (Faker\Generator $faker)
         'list' => json_encode([1,3,5,7])
     ];
 });
+*/
 
 $factory->define(App\DailyJournalQuestions::class, function (Faker\Generator $faker) {
 

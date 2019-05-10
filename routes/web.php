@@ -171,10 +171,10 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->delete('daily_journal_questions/{id}', ['uses' => 'DailyJournalQuestionsController@delete']);
     $router->put('daily_journal_questions/{id}', ['uses' => 'DailyJournalQuestionsController@update']);
 
-    //journal_favourites
-    $router->get('journal_favourites',  ['uses' => 'JournalFavouritesController@getAllJournalFavourites']);
-    $router->get('journal_favourites/{id}', ['uses' => 'JournalFavouritesController@getOneJournalFavourite']);
-    $router->post('journal_favourites', ['uses' => 'JournalFavouritesController@create']);
-    $router->delete('journal_favourites/{id}', ['uses' => 'JournalFavouritesController@delete']);
-    $router->put('journal_favourites/{id}', ['uses' => 'JournalFavouritesController@update']);
+    //favourites
+    $router->get('favourites',  ['uses' => 'FavouritesController@getAllFavourites']);
+    $router->get('favourites/{id}', ['uses' => 'FavouritesController@getOneFavourite']);
+    $router->post('favourites', ['uses' => 'FavouritesController@create']);
+    $router->delete('favourites/{id}', ['uses' => 'FavouritesController@delete']);
+    $router->put('favourites/{id}', ['uses' => 'FavouritesController@update']);
 });
