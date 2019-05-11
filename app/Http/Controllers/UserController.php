@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Favourites;
 use App\User;
 use App\Vision;
 use App\Goal;
@@ -267,25 +268,21 @@ class UserController extends Controller
         );
     }
 
-    public function getUserJournalQuestionFavourites($id)
+    public function getUserFavourites($id, $type)
     {
-        $questions = [];
-        $favourites = User::findOrFail($id)
-                ->where('users.id','=', $id)
-                ->leftJoin('journal_favourites as jqf', 'users.id', '=', 'jqf.user_id')
+        $favourites = [];
+        if ($type === 'journal') {
+            $favourites = Favourites::where('favourites.user_id','=', $id)
+                ->leftJoin('journal_questions as jq', 'entity_id', '=', 'jq.id')
                 ->select([
-                    'jqf.list AS list'
+                    'jq.*',
+                    'jq.user_id AS user_id',
+                    'favourites.created_at AS favourite_created_at',
+                    'favourites.updated_at AS favourite_updated_at'
                 ])
-                ->get(1);
-
-        if (sizeof($favourites) === 1) {
-            $questions = json_decode($favourites[0]['list'], true);
-        };
-
-        return response()->json(
-            JournalQuestion::whereIn('id', $questions)
-                ->get()
-        );
+                ->get();
+        }
+        return response()->json($favourites);
     }
 
     //return logs of your supporters

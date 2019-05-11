@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class JournalFavouritesTableSeeder extends Seeder
+class FavouritesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class JournalFavouritesTableSeeder extends Seeder
      */
     public function run()
     {
-        $journalFavourites = factory(App\JournalFavourites::class, 1)
+        $favourites = factory(App\Favourites::class, 1)
             ->create();
     }
 }

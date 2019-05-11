@@ -343,15 +343,16 @@ $factory->define(App\JournalQuestion::class, function (Faker\Generator $faker) {
     ];
 });
 
-/*
-$factory->define(App\JournalFavourites::class, function (Faker\Generator $faker) {
+
+$factory->define(App\Favourites::class, function (Faker\Generator $faker) {
 
     return [
         'user_id' => 'eI1AV0blghcWzngdT0DprCz2W1V2',
-        'list' => json_encode([1,3,5,7])
+        'type' => 'JOURNAL',
+        'entity_id' => random_int(1, 10),
     ];
 });
-*/
+
 
 $factory->define(App\DailyJournalQuestions::class, function (Faker\Generator $faker) {
 
