@@ -277,6 +277,7 @@ class UserController extends Controller
                 ->select([
                     'jq.*',
                     'jq.user_id AS user_id',
+                    'favourites.id AS favourite_id',
                     'favourites.created_at AS favourite_created_at',
                     'favourites.updated_at AS favourite_updated_at'
                 ])
