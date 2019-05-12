@@ -25,6 +25,11 @@ class TaskController extends Controller
             'user_id' => 'required',
             'description' => 'max:255',
             'status' => 'required|alpha_dash|max:12',
+            'progress' => '',
+            'size' => '',
+            'category' => '',
+            'privacy' => '',
+            'urgency' => 'required|alpha_dash|max:16',
             'time_remaining' => 'integer'
         ]);
 
@@ -39,6 +44,11 @@ class TaskController extends Controller
             'user_id' => 'required',
             'description' => 'max:255',
             'status' => 'required|alpha_dash|max:12',
+            'progress' => '',
+            'size' => '',
+            'category' => '',
+            'privacy' => '',
+            'urgency' => 'required|alpha_dash|max:16',
             'time_remaining' => 'integer'
         ]);
 

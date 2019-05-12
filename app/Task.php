@@ -21,6 +21,11 @@ class Task extends Model implements AuthenticatableContract, AuthorizableContrac
         'user_id',
         'description',
         'status',
+        'progress',
+        'size',
+        'category',
+        'privacy',
+        'urgency',
         'time_remaining'
     ];
 

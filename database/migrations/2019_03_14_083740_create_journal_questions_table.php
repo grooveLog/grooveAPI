@@ -18,7 +18,7 @@ class CreateJournalQuestionsTable extends Migration
             $table->string('user_id')->comment('The ID of user who has submitted the question');
             $table->string('question')->comment('The journalling question');
             $table->string('type', 12)->comment('e.g. MORNING, EVENING');
-            $table->string('privacy')->default('PUBLIC')->comment('PUBLIC or PRIVATE (or TEAM in Future)');
+            $table->string('privacy', 12)->default('PUBLIC')->comment('PUBLIC or PRIVATE (or TEAM in Future)');
             $table->text('explanation')->comment('extra commentary');
             $table->json('links')->nullable()->comment('Links to URLs / Articles etc');
             $table->boolean('endorsed')->default(0)->comment('Whether endorsed by GrooveLog');

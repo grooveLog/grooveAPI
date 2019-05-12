@@ -315,6 +315,11 @@ $factory->define(App\Task::class, function (Faker\Generator $faker) {
     return [
         'user_id' => $faker->randomElement($userIds),
         'description' => $faker->realText(120),
+        'urgency' => $faker->randomElement(['TODAY', 'NXT_FEW_DAYS', 'UPCOMING', 'BACKBURNER']),
+        'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
+        'category' => $faker->randomElement(['WORK', 'HOME', 'PERSONAL', 'PROJECTS', 'HEALTH']),
+        'progress' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
+        'size' => $faker->randomElement(['XS', 'S', 'M', 'L', 'XL']),
         'status' => $faker->randomElement(['PENDING', 'DONE']),
         'time_remaining' => random_int(1, 90),
     ];
