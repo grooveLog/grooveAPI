@@ -7,6 +7,7 @@ use App\User;
 use App\Vision;
 use App\Goal;
 use App\Groove;
+use App\Task;
 use App\Answer;
 use App\JournalQuestion;
 use Illuminate\Http\Request;
@@ -284,6 +285,15 @@ class UserController extends Controller
                 ->get();
         }
         return response()->json($favourites);
+    }
+
+    public function getUserTasks($id)
+    {
+        return response()->json(
+            User::findOrFail($id)
+                ->tasks()
+                ->get()
+        );
     }
 
     //return logs of your supporters
