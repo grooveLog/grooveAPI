@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->string('user_id')->comment('The ID of user who created the task');
             $table->string('description')->comment('The task');
-            $table->string('urgency', 16)->default('ACTIVE')->comment('TODAY/NXT_FEW_DAYS/UPCOMING/BACKBURNER');
+            $table->integer('urgency')->default(0)->comment('100 = ASAP, 75 = TODAY, 50 = NXT_FEW_DAYS; 25 = UPCOMING, 0 = BACKBURNER');
             $table->string('category', 16)->default('ACTIVE')->comment('HOME/WORK/PERSONAL/');
             $table->string('privacy', 12)->default('PUBLIC')->comment('PUBLIC or PRIVATE (or TEAM in Future)');
             $table->string('status', 12)->default('ACTIVE')->comment('PENDING/DONE etc.');

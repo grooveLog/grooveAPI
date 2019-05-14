@@ -29,7 +29,7 @@ class TaskController extends Controller
             'size' => '',
             'category' => '',
             'privacy' => '',
-            'urgency' => 'required|alpha_dash|max:16',
+            'urgency' => 'required|integer',
             'time_remaining' => 'integer'
         ]);
 
@@ -48,7 +48,7 @@ class TaskController extends Controller
             'size' => '',
             'category' => '',
             'privacy' => '',
-            'urgency' => 'required|alpha_dash|max:16',
+            'urgency' => 'required|integer',
             'time_remaining' => 'integer'
         ]);
 
