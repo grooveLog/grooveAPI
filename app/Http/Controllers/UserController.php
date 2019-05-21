@@ -296,6 +296,36 @@ class UserController extends Controller
         );
     }
 
+    public function getUserTaskLogs($id, Request $request)
+    {
+        $start = $request->query('start');
+        $end = $request->query('end');
+        //id empty then set start and end to today
+        if (empty($start) || empty($end)){
+            $time = \Carbon\Carbon::now()->toDateTimeString();
+            $start = $time;
+            $end = $time;
+        }
+        return response()->json(
+            User::findOrFail($id)
+                ->logs()
+                ->leftJoin('tasks as t', function ($join) {
+                    $join->on('logs.groove_id', '=', 't.id')
+                        ->whereNotNull('logs.task_id');
+                })
+                ->where('type', 'TASK')
+                ->whereBetween('performed_at', [$start, $end])
+                ->orderBy('performed_at', 'desc')
+                ->select([
+                    'logs.*',
+                    'logs.id AS id',
+                    'logs.type AS type',
+                    't.description AS task_description',
+                ])
+                ->get()
+        );
+    }
+
     //return logs of your supporters
     public function getSupporterLogsPerUser($id)
     {
