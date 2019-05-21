@@ -310,7 +310,7 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->logs()
                 ->leftJoin('tasks as t', function ($join) {
-                    $join->on('logs.groove_id', '=', 't.id')
+                    $join->on('logs.task_id', '=', 't.id')
                         ->whereNotNull('logs.task_id');
                 })
                 ->where('type', 'TASK')
