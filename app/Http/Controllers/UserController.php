@@ -292,6 +292,7 @@ class UserController extends Controller
         return response()->json(
             User::findOrFail($id)
                 ->tasks()
+                ->where('status', 'PENDING')
                 ->orderBy('created_at', 'desc')
                 ->get()
         );
