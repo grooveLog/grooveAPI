@@ -323,6 +323,8 @@ class UserController extends Controller
                     'logs.id AS id',
                     'logs.type AS type',
                     't.description AS task_description',
+                    't.size AS task_size',
+                    't.status AS task_status'
                 ])
                 ->get()
         );
