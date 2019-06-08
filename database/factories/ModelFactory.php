@@ -251,6 +251,7 @@ $factory->define(App\Groove::class, function (Faker\Generator $faker) {
         'user_id' => $faker->randomElement($userIds),
         'universal_groove_id' => random_int(1, 10),
         'personal_description' => $faker->realText(32),
+        'privacy' => $faker->randomElement(['PUBLIC', 'PRIVATE']),
         'commitment' => $faker->randomElement([5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,86,90,95,100]),
         'volume_amount' => $faker->randomElement([1,1,1,1,1, 2, 2, 3, 5,10,15,20, 25, 30]),
         'volume_measurement' => $faker->randomElement(['REPS', 'SESSIONS', 'MINS']),

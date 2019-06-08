@@ -18,8 +18,17 @@ class Groove extends Model implements AuthenticatableContract, AuthorizableContr
      * @var array
      */
     protected $fillable = [
-        'user_id', 'universal_groove_id', 'completed_at', 'personal_description', 'commitment', 'volume_amount', 'volume_measurement', 'frequency_prefix', 'frequency_number',
-        'frequency_period', 'status',
+        'user_id',
+        'universal_groove_id',
+        'personal_description',
+        'privacy',
+        'commitment',
+        'volume_amount',
+        'volume_measurement',
+        'frequency_prefix',
+        'frequency_number',
+        'frequency_period',
+        'status',
     ];
 
     /**

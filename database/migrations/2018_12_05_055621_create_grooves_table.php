@@ -17,6 +17,7 @@ class CreateGroovesTable extends Migration
             $table->increments('id');
             $table->string('user_id')->comment('The ID of user who assigning the universal groove');
             $table->integer('universal_groove_id')->unsigned();
+            $table->string('privacy', 12)->default('PUBLIC')->comment('PUBLIC or PRIVATE (or TEAM in Future)');
             $table->string('personal_description')->nullable()->comment('The personal implementation of the universal groove, how I will do it');
             $table->integer('commitment')->default(5)->comment('personal commitment - e.g. 75%');
             $table->integer('volume_amount')->nullable()->comment('Optional, relates to volume_measurement e.g. 20 mins or 10 reps');

@@ -30,6 +30,7 @@ class GrooveController extends Controller
         $this->validate($request, [
             'universal_groove_id' => 'required|integer',
             'personal_description' => 'max:255',
+            'privacy' => '',
             'commitment' => 'integer',
             'volume_amount' => 'integer',
             'volume_measurement' => 'alpha_dash|max:12',
@@ -49,6 +50,7 @@ class GrooveController extends Controller
         $this->validate($request, [
             'universal_groove_id' => 'required|integer',
             'personal_description' => 'max:255',
+            'privacy' => '',
             'commitment' => 'integer',
             'volume_amount' => 'integer',
             'volume_measurement' => 'alpha_dash|max:12',
