@@ -98,7 +98,7 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->grooves()
                 ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
-                ->get(['grooves.*', 'ug.*', 'grooves.id AS id'])
+                ->get(['grooves.*', 'ug.*', 'grooves.id AS id', 'grooves.privacy AS privacy'])
         );
     }
 
@@ -145,7 +145,7 @@ class UserController extends Controller
                     'jq.question AS journal_question',
                     'jq.endorsed AS journal_question_endorsed',
                     'g.personal_description AS groove_personal_description',
-                    'g.privacy AS groove_privacy',
+                    'g.privacy AS privacy',
                     'g.commitment AS groove_commitment',
                     'g.volume_amount AS groove_volume_amount',
                     'g.volume_measurement AS groove_volume_measurement',
@@ -200,7 +200,7 @@ class UserController extends Controller
                     'g.frequency_number AS groove_frequency_number',
                     'g.frequency_period AS groove_frequency_period',
                     'g.status AS groove_status',
-                    'g.privacy AS groove_privacy',
+                    'g.privacy AS privacy',
                     'ug.user_id AS universal_groove_user_id',
                     'ug.name AS universal_groove_name',
                     'ug.privacy AS universal_groove_privacy',
