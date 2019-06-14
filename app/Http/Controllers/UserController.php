@@ -98,7 +98,13 @@ class UserController extends Controller
             User::findOrFail($id)
                 ->grooves()
                 ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
-                ->get(['grooves.*', 'ug.*', 'grooves.id AS id', 'grooves.privacy AS privacy'])
+                ->get([
+                    'grooves.*',
+                    'ug.*',
+                    'grooves.id AS id',
+                    'grooves.privacy AS privacy',
+                    'grooves.status AS status'
+                ])
         );
     }
 
