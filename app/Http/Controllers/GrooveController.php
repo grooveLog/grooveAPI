@@ -20,7 +20,13 @@ class GrooveController extends Controller
             Groove::findOrFail($id)
                 ->leftJoin('universal_grooves as ug', 'ug.id', '=', 'grooves.universal_groove_id')
                 ->where('grooves.id', $id)
-                ->select('grooves.*', 'ug.*', 'grooves.id AS id')
+                ->select(
+                    'grooves.*',
+                    'ug.*',
+                    'grooves.id AS id',
+                    'grooves.privacy AS privacy',
+                    'grooves.status AS status'
+                )
                 ->first()
         );
     }
