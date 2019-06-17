@@ -68,5 +68,9 @@ class LogController extends Controller
         return response('Successfully Deleted Log', 200);
     }
 
+    public function deleteGrooveLogs($grooveId){
+        //
+    }
+
 
 }
