@@ -69,7 +69,8 @@ class LogController extends Controller
     }
 
     public function deleteGrooveLogs($grooveId){
-        //
+        log::where('groove_id', $grooveId)->delete();
+        //needs to handle exceptions
     }
 
 

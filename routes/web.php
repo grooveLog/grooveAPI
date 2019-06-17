@@ -146,7 +146,7 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->get('logs/{id}', ['uses' => 'LogController@getOneLog']);
     $router->post('logs', ['uses' => 'LogController@create']);
     $router->delete('logs/{id}', ['uses' => 'LogController@delete']);
-    $router->delete('logs/groove{grooveId}',  ['uses' => 'LogController@deleteGrooveLogs']);
+    $router->delete('logs/groove/{grooveId}',  ['uses' => 'LogController@deleteGrooveLogs']);
     $router->put('logs/{id}', ['uses' => 'LogController@update']);
     $router->patch('logs/{id}', ['uses' => 'LogController@patch']);
 
