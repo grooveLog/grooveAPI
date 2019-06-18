@@ -68,6 +68,19 @@ class LogController extends Controller
         return response('Successfully Deleted Log', 200);
     }
 
+    public function getGrooveLogStats($grooveId)
+    {
+        $results = Log::where('groove_id', $grooveId)
+            ->select(
+                'performed_at'
+            )->get();
+
+        var_dump($results);
+
+        return response()->json();
+
+    }
+
     public function deleteGrooveLogs($grooveId){
         log::where('groove_id', $grooveId)->delete();
         //needs to handle exceptions
