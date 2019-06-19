@@ -78,16 +78,34 @@ class LogController extends Controller
             )->get();
 
         $dates = [];
+        $thisYear = [];
+        $thisYearTotal = count($results);
+        $thisMonth = [];
+        $thisMonthTotal = 0;
+        $thisWeek = [];
+        $thisWeekTotal = 0;
+
+        $currentMonth = Carbon::now()->month;
+
+
         foreach($results as $res)
         {
-            var_dump($res->performed_at);
-            array_push($dates, $res->performed_at);
+            $date = $res->performed_at;
+            //this year
+            $weekOfYear = Carbon::parse($date)->weekOfYear;
+            $thisYear[$weekOfYear] ++;
+
+            //this month
+
+            //this week
+
+            array_push($dates, $date);
         }
 
         return response()->json([
         'thisYear' => [
-            'dates' => $dates,
-            'total' => 0
+            'data' => $thisYear,
+            'total' => $thisYearTotal
         ]
     ]);
 
