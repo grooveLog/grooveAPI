@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 
 class LogController extends Controller
@@ -71,13 +72,24 @@ class LogController extends Controller
     public function getGrooveLogStats($grooveId)
     {
         $results = Log::where('groove_id', $grooveId)
+            ->where('performed_at', '>=', Carbon::parse('first day of January'))
             ->select(
                 'performed_at'
             )->get();
 
-        var_dump($results);
+        $dates = [];
+        foreach($results as $res)
+        {
+            var_dump($res->performed_at);
+            array_push($dates, $res->performed_at);
+        }
 
-        return response()->json();
+        return response()->json([
+        'thisYear' => [
+            'dates' => $dates,
+            'total' => 0
+        ]
+    ]);
 
     }
 
