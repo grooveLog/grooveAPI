@@ -78,37 +78,99 @@ class LogController extends Controller
             )->get();
 
         $dates = [];
-        $thisYear = [];
+        //set up all weeks
+        $currentWeekOfYear = Carbon::now()->weekOfYear;
+
+        $thisYearWeekly = array_fill(1, $currentWeekOfYear, 0);
         $thisYearTotal = count($results);
-        $thisMonth = [];
+
+        $thisMonth = array_fill(1, Carbon::now()->format('d'), 0);
         $thisMonthTotal = 0;
-        $thisWeek = [];
+
+        $thisWeekDaily = [
+            'mon' => 0,
+            'tues' => 0,
+            'weds' => 0,
+            'thurs' => 0,
+            'fri' => 0,
+            'sat' => 0,
+            'sun' => 0
+        ];
         $thisWeekTotal = 0;
 
         $currentMonth = Carbon::now()->month;
 
+        $thisMonday = Carbon::now()->startOfWeek();
 
-        foreach($results as $res)
-        {
+        $startOfMonth = Carbon::now()->startOfMonth();
+
+        foreach ($results as $res) {
             $date = $res->performed_at;
+
             //this year
             $weekOfYear = Carbon::parse($date)->weekOfYear;
-            $thisYear[$weekOfYear] ++;
+            $thisYearWeekly[$weekOfYear]++;
 
             //this month
+            if (Carbon::parse($date)->gt(Carbon::parse($startOfMonth))) {
+                $thisMonth[Carbon::parse($date)->format('d')] ++;
+                $thisMonthTotal ++;
+            }
 
             //this week
-
-            array_push($dates, $date);
+            if (Carbon::parse($date)->gt(Carbon::parse($thisMonday))) {
+                switch ($date) {
+                    case $thisMonday->format('Y-m-d'):
+                        $thisWeekDaily['mon'] ++;
+                        $thisWeekTotal ++;
+                        break;
+                    case $thisMonday->copy()->addDays(1)->format('Y-m-d'):
+                        $thisWeekDaily['tues'] ++;
+                        $thisWeekTotal ++;
+                        break;
+                    case $thisMonday->copy()->addDays(2)->format('Y-m-d'):
+                        $thisWeekDaily['weds'] ++;
+                        $thisWeekTotal ++;
+                        break;
+                    case $thisMonday->copy()->addDays(3)->format('Y-m-d'):
+                        $thisWeekDaily['thurs'] ++;
+                        $thisWeekTotal ++;
+                        break;
+                    case $thisMonday->copy()->addDays(4)->format('Y-m-d'):
+                        $thisWeekDaily['fri'] ++;
+                        $thisWeekTotal ++;
+                        break;
+                    case $thisMonday->copy()->addDays(5)->format('Y-m-d'):
+                        $thisWeekDaily['sat'] ++;
+                        $thisWeekTotal ++;
+                        break;
+                    case $thisMonday->copy()->addDays(6)->format('Y-m-d'):
+                        $thisWeekDaily['sun'] ++;
+                        $thisWeekTotal ++;
+                        break;
+                }
+                array_push($dates, $date);
+            }
         }
-
-        return response()->json([
-        'thisYear' => [
-            'data' => $thisYear,
-            'total' => $thisYearTotal
-        ]
-    ]);
-
+        return response()->json(
+            [
+                'thisYear' => [
+                    'data' => $thisYearWeekly,
+                    'dataDescription' => 'Totals per week',
+                    'total' => $thisYearTotal
+                ],
+                'thisMonth' => [
+                    'data' => $thisMonth,
+                    'dataDescription' => 'Totals for current month',
+                    'total' => $thisMonthTotal
+                ],
+                'thisWeek' => [
+                    'data' => $thisWeekDaily,
+                    'dataDescription' => 'Totals per day for this week',
+                    'total' => $thisWeekTotal
+                ]
+            ]
+        );
     }
 
     public function deleteGrooveLogs($grooveId){
