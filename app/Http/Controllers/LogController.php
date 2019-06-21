@@ -147,6 +147,7 @@ class LogController extends Controller
         }
         return response()->json(
             [
+                'grooveId' => $grooveId,
                 'thisYear' => [
                     'data' => $thisYearWeekly,
                     'dataDescription' => 'Totals per week',
