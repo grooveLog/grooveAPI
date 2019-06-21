@@ -78,15 +78,12 @@ class LogController extends Controller
             )->get();
 
         $dates = [];
-        //set up all weeks
-        $currentWeekOfYear = Carbon::now()->weekOfYear;
 
+        $currentWeekOfYear = Carbon::now()->weekOfYear;
         $thisYearWeekly = array_fill(1, $currentWeekOfYear, 0);
         $thisYearTotal = count($results);
-
         $thisMonth = array_fill(1, Carbon::now()->format('d'), 0);
         $thisMonthTotal = 0;
-
         $thisWeekDaily = [
             'mon' => 0,
             'tues' => 0,
@@ -97,11 +94,7 @@ class LogController extends Controller
             'sun' => 0
         ];
         $thisWeekTotal = 0;
-
-        $currentMonth = Carbon::now()->month;
-
         $thisMonday = Carbon::now()->startOfWeek();
-
         $startOfMonth = Carbon::now()->startOfMonth();
 
         foreach ($results as $res) {
@@ -177,6 +170,5 @@ class LogController extends Controller
         log::where('groove_id', $grooveId)->delete();
         //needs to handle exceptions
     }
-
 
 }
