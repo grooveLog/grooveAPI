@@ -82,7 +82,7 @@ class LogController extends Controller
         $currentWeekOfYear = Carbon::now()->weekOfYear;
         $thisYearWeekly = array_fill(1, $currentWeekOfYear, 0);
         $thisYearTotal = count($results);
-        $thisMonth = array_fill(1, Carbon::now()->format('d'), 0);
+        $thisMonth = array_fill(1, Carbon::now()->format('j'), 0);
         $thisMonthTotal = 0;
         $thisWeekDaily = [
             'mon' => 0,
@@ -96,6 +96,7 @@ class LogController extends Controller
         $thisWeekTotal = 0;
         $thisMonday = Carbon::now()->startOfWeek();
         $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
 
         foreach ($results as $res) {
             $date = $res->performed_at;
@@ -105,8 +106,10 @@ class LogController extends Controller
             $thisYearWeekly[$weekOfYear]++;
 
             //this month
-            if (Carbon::parse($date)->gt(Carbon::parse($startOfMonth))) {
-                $thisMonth[Carbon::parse($date)->format('d')] ++;
+            if (Carbon::parse($date)->gt(Carbon::parse($startOfMonth)) &&
+                Carbon::parse($date)->lt(Carbon::parse($endOfMonth))
+            ) {
+                $thisMonth[Carbon::parse($date)->format('j')] ++;
                 $thisMonthTotal ++;
             }
 
@@ -118,15 +121,15 @@ class LogController extends Controller
                         $thisWeekTotal ++;
                         break;
                     case $thisMonday->copy()->addDays(1)->format('Y-m-d'):
-                        $thisWeekDaily['tues'] ++;
+                        $thisWeekDaily['tue'] ++;
                         $thisWeekTotal ++;
                         break;
                     case $thisMonday->copy()->addDays(2)->format('Y-m-d'):
-                        $thisWeekDaily['weds'] ++;
+                        $thisWeekDaily['wed'] ++;
                         $thisWeekTotal ++;
                         break;
                     case $thisMonday->copy()->addDays(3)->format('Y-m-d'):
-                        $thisWeekDaily['thurs'] ++;
+                        $thisWeekDaily['thu'] ++;
                         $thisWeekTotal ++;
                         break;
                     case $thisMonday->copy()->addDays(4)->format('Y-m-d'):
