@@ -86,9 +86,9 @@ class LogController extends Controller
         $thisMonthTotal = 0;
         $thisWeekDaily = [
             'mon' => 0,
-            'tues' => 0,
-            'weds' => 0,
-            'thurs' => 0,
+            'tue' => 0,
+            'wed' => 0,
+            'thu' => 0,
             'fri' => 0,
             'sat' => 0,
             'sun' => 0
