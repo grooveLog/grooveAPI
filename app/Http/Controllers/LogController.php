@@ -25,7 +25,7 @@ class LogController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'type' => 'required|alpha_dash|max:12',
-            'privacyNonDerived' => '', //note privacy is usually derived from Groove or Task privacy
+            'privacy_non_derived' => '', //note privacy is usually derived from Groove or Task privacy
             'groove_id' => 'integer',
             'task_id' => 'integer',
             'introspection' => '',
@@ -47,7 +47,7 @@ class LogController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'type' => 'required|alpha_dash|max:12',
-            'privacyNonDerived' => '',
+            'privacy_non_derived' => '',
             'groove_id' => 'integer',
             'task_id' => 'integer',
             'introspection' => '',

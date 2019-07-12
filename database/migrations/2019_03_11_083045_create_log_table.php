@@ -17,7 +17,7 @@ class CreateLogTable extends Migration
             $table->increments('id');
             $table->string('user_id')->comment('The ID of user recording to the logs');
             $table->string('type', 12)->comment('Type being logged e.g. GROOVE, MOOD, TASK, JOURNAL');
-            $table->string('privacyNonDerived', 12)->nullable()->comment('PUBLIC or PRIVATE (not derived for task or groove)');
+            $table->string('privacy_non_derived', 12)->nullable()->comment('PUBLIC or PRIVATE (not derived for task or groove)');
             $table->integer('groove_id')->nullable()->comment('Key to the Groove table');
             $table->integer('task_id')->nullable()->comment('Key to the Task table');
             $table->json('introspection')->nullable()->comment('For Mood Introspection');
